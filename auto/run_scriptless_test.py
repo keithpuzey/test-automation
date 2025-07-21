@@ -1,6 +1,8 @@
+import requests
 import time
 import os
 import xml.etree.ElementTree as ET
+
 
 PerfectoKey = os.getenv("PerfectoToken")
 if not PerfectoKey:
@@ -13,6 +15,8 @@ if not Perfectotest:
 Perfectotestname = os.getenv("PerfectoTestname")
 if not Perfectotestname:
     raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
+
+
 
 # Config
 perfecto_cloud = 'demo.perfectomobile.com'
