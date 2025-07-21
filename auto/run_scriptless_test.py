@@ -1,23 +1,18 @@
-import requests
 import time
 import os
 import xml.etree.ElementTree as ET
 
-# Fetch environment variables
 PerfectoKey = os.getenv("PerfectoToken")
 if not PerfectoKey:
     raise RuntimeError("❌ Environment variable 'PerfectoToken' is not set.")
 
 Perfectotest = os.getenv("PerfectoTest")
 if not Perfectotest:
-    raise RuntimeError("❌ Environment variable 'PerfectoTest' is not set.")
+    raise RuntimeError("❌ Environment variable 'Perfectotest' is not set.")
 
 Perfectotestname = os.getenv("PerfectoTestname")
 if not Perfectotestname:
-    raise RuntimeError("❌ Environment variable 'PerfectoTestname' is not set.")
-
-TestURL = os.getenv("PerfectoURL", "")
-TestWait = os.getenv("PerfectoWait", "3")
+    raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
 
 # Config
 perfecto_cloud = 'demo.perfectomobile.com'
@@ -26,23 +21,12 @@ RESULT_DIR = "test-results"
 RESULT_FILE = os.path.join(RESULT_DIR, "perfecto-result.xml")
 TEST_NAME = Perfectotestname
 
+# Start the Perfecto script execution
 def start_test():
-    url = f'https://{perfecto_cloud}/services/executions?operation=execute'
+    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public'
     headers = {'Content-Type': 'application/json'}
 
-    payload = {
-        "scriptKey": script_key,
-        "securityToken": PerfectoKey,
-        "output": {
-            "visibility": "public"
-        },
-        "scriptArgs": {
-            "url": TestURL,
-            "wait": TestWait
-        }
-    }
-
-    response = requests.post(url, headers=headers, json=payload)
+    response = requests.post(url, headers=headers)
     if response.status_code == 200:
         try:
             response_json = response.json()
@@ -50,16 +34,17 @@ def start_test():
             report_key = response_json.get('reportKey')
             test_grid_report_url = response_json.get('testGridReportUrl')
             single_test_report_url = response_json.get('singleTestReportUrl')
-            print("📄 Single Test Report:", single_test_report_url)
+            print("Single Test Report:", single_test_report_url)
             return execution_id, report_key, test_grid_report_url, single_test_report_url
-        except Exception as e:
-            print("❌ Error parsing response:", e)
+        except KeyError:
+            print("❌ Error parsing response:")
             print(response.content)
             return None, None, None, None
     else:
         print("❌ Error starting test:", response.text)
         return None, None, None, None
 
+# Poll until the test completes
 def check_test_status(execution_id):
     url = f'https://{perfecto_cloud}/services/executions/{execution_id}?operation=status&securityToken={PerfectoKey}'
     try:
@@ -77,6 +62,7 @@ def check_test_status(execution_id):
         print("❌ Error checking test status:", e)
         return None, None, None, None, None
 
+# Create a JUnit XML result file with duration
 def generate_junit_xml(test_name, result, report_url, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
@@ -109,6 +95,7 @@ def generate_junit_xml(test_name, result, report_url, reason=None, duration_seco
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
 
+# Main function
 def main():
     start_time = time.time()
     execution_id, report_key, test_grid_report_url, single_test_report_url = start_test()
@@ -127,18 +114,25 @@ def main():
             generate_junit_xml(TEST_NAME, "failed", single_test_report_url, reason="Could not fetch status", duration_seconds=duration)
             exit(1)
 
-        print("🔄 Status:", status, "| Flow End Code:", flow_end_code)
+        print("Current status:", status)
+        print("Flow End Code:", flow_end_code)
 
         if status.lower() in ['completed', 'failed', 'stopped']:
             duration = time.time() - start_time
             print("✅ Test execution completed.")
 
             if flow_end_code == 'Failed':
-                print("❌ Test failed. Reason:", reason)
+                print("Test failed.")
+                print("Reason:", reason)
+                print("Devices:", devices)
+                print("Report:", single_test_report_url)
                 generate_junit_xml(TEST_NAME, "failed", single_test_report_url, reason, duration_seconds=duration)
                 exit(1)
             else:
-                print("✅ Test passed.")
+                print("Test passed.")
+                print("Reason:", reason)
+                print("Devices:", devices)
+                print("Report:", single_test_report_url)
                 generate_junit_xml(TEST_NAME, "passed", single_test_report_url, duration_seconds=duration)
                 exit(0)
 
