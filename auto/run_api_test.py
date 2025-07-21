@@ -31,7 +31,7 @@ else:
     AUTH_TOKEN = api_token
 
 # Configurable values
-RUNSCOPE_TRIGGER_URL = "https://api.runscope.com/radar/{api_test}/trigger?runscope_environment={api_environment}"
+RUNSCOPE_TRIGGER_URL = "RUNSCOPE_TRIGGER_URL = f"https://api.runscope.com/radar/{api_test}/trigger?runscope_environment={api_environment}"
 
 RESULT_DIR = "test-results"
 RESULT_FILE = os.path.join(RESULT_DIR, "runscope-result.xml")
