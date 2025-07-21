@@ -20,10 +20,10 @@ if not Perfectotestname:
 
 # Config
 perfecto_cloud = 'demo.perfectomobile.com'
-script_key = '{Perfectotest}'
+script_key = Perfectotest
 RESULT_DIR = "test-results"
 RESULT_FILE = os.path.join(RESULT_DIR, "perfecto-result.xml")
-TEST_NAME = "{Perfectotestname}"
+TEST_NAME = Perfectotestname
 
 # Start the Perfecto script execution
 def start_test():
