@@ -3,20 +3,21 @@ import time
 import os
 import xml.etree.ElementTree as ET
 
-
+# Environment Variables
 PerfectoKey = os.getenv("PerfectoToken")
 if not PerfectoKey:
     raise RuntimeError("❌ Environment variable 'PerfectoToken' is not set.")
 
-Perfectotest = os.getenv("PerfectoTest")
+Perfectotest = os.getenv("Perfectotest")
 if not Perfectotest:
     raise RuntimeError("❌ Environment variable 'Perfectotest' is not set.")
 
-Perfectotestname = os.getenv("PerfectoTestname")
+Perfectotestname = os.getenv("Perfectotestname")
 if not Perfectotestname:
     raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
 
-
+TestURL = os.getenv("TestURL", "https://example.com")
+TestWait = os.getenv("TestWait", "5")
 
 # Config
 perfecto_cloud = 'demo.perfectomobile.com'
@@ -27,10 +28,23 @@ TEST_NAME = Perfectotestname
 
 # Start the Perfecto script execution
 def start_test():
-    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public'
+    url = f'https://{perfecto_cloud}/services/executions'
     headers = {'Content-Type': 'application/json'}
 
-    response = requests.post(url, headers=headers)
+    payload = {
+        "operation": "execute",
+        "scriptKey": script_key,
+        "securityToken": PerfectoKey,
+        "output": {
+            "visibility": "public"
+        },
+        "scriptArgs": {
+            "url": TestURL,
+            "wait": TestWait
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
     if response.status_code == 200:
         try:
             response_json = response.json()
@@ -48,7 +62,7 @@ def start_test():
         print("❌ Error starting test:", response.text)
         return None, None, None, None
 
-# Poll until the test completes
+# Check test status
 def check_test_status(execution_id):
     url = f'https://{perfecto_cloud}/services/executions/{execution_id}?operation=status&securityToken={PerfectoKey}'
     try:
@@ -66,7 +80,7 @@ def check_test_status(execution_id):
         print("❌ Error checking test status:", e)
         return None, None, None, None, None
 
-# Create a JUnit XML result file with duration
+# Generate JUnit XML
 def generate_junit_xml(test_name, result, report_url, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
