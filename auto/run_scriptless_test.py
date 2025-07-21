@@ -3,7 +3,7 @@ import time
 import os
 import xml.etree.ElementTree as ET
 
-# Environment Variables
+# Fetch environment variables
 PerfectoKey = os.getenv("PerfectoToken")
 if not PerfectoKey:
     raise RuntimeError("❌ Environment variable 'PerfectoToken' is not set.")
@@ -14,10 +14,10 @@ if not Perfectotest:
 
 Perfectotestname = os.getenv("PerfectoTestname")
 if not Perfectotestname:
-    raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
+    raise RuntimeError("❌ Environment variable 'PerfectoTestname' is not set.")
 
-TestURL = os.getenv("TestURL", "https://example.com")
-TestWait = os.getenv("TestWait", "5")
+TestURL = os.getenv("PerfectoURL", "")
+TestWait = os.getenv("PerfectoWait", "3")
 
 # Config
 perfecto_cloud = 'demo.perfectomobile.com'
@@ -26,13 +26,11 @@ RESULT_DIR = "test-results"
 RESULT_FILE = os.path.join(RESULT_DIR, "perfecto-result.xml")
 TEST_NAME = Perfectotestname
 
-# Start the Perfecto script execution
 def start_test():
-    url = f'https://{perfecto_cloud}/services/executions'
+    url = f'https://{perfecto_cloud}/services/executions?operation=execute'
     headers = {'Content-Type': 'application/json'}
 
     payload = {
-        "operation": "execute",
         "scriptKey": script_key,
         "securityToken": PerfectoKey,
         "output": {
@@ -52,17 +50,16 @@ def start_test():
             report_key = response_json.get('reportKey')
             test_grid_report_url = response_json.get('testGridReportUrl')
             single_test_report_url = response_json.get('singleTestReportUrl')
-            print("Single Test Report:", single_test_report_url)
+            print("📄 Single Test Report:", single_test_report_url)
             return execution_id, report_key, test_grid_report_url, single_test_report_url
-        except KeyError:
-            print("❌ Error parsing response:")
+        except Exception as e:
+            print("❌ Error parsing response:", e)
             print(response.content)
             return None, None, None, None
     else:
         print("❌ Error starting test:", response.text)
         return None, None, None, None
 
-# Check test status
 def check_test_status(execution_id):
     url = f'https://{perfecto_cloud}/services/executions/{execution_id}?operation=status&securityToken={PerfectoKey}'
     try:
@@ -80,7 +77,6 @@ def check_test_status(execution_id):
         print("❌ Error checking test status:", e)
         return None, None, None, None, None
 
-# Generate JUnit XML
 def generate_junit_xml(test_name, result, report_url, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
@@ -113,7 +109,6 @@ def generate_junit_xml(test_name, result, report_url, reason=None, duration_seco
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
 
-# Main function
 def main():
     start_time = time.time()
     execution_id, report_key, test_grid_report_url, single_test_report_url = start_test()
@@ -132,25 +127,18 @@ def main():
             generate_junit_xml(TEST_NAME, "failed", single_test_report_url, reason="Could not fetch status", duration_seconds=duration)
             exit(1)
 
-        print("Current status:", status)
-        print("Flow End Code:", flow_end_code)
+        print("🔄 Status:", status, "| Flow End Code:", flow_end_code)
 
         if status.lower() in ['completed', 'failed', 'stopped']:
             duration = time.time() - start_time
             print("✅ Test execution completed.")
 
             if flow_end_code == 'Failed':
-                print("Test failed.")
-                print("Reason:", reason)
-                print("Devices:", devices)
-                print("Report:", single_test_report_url)
+                print("❌ Test failed. Reason:", reason)
                 generate_junit_xml(TEST_NAME, "failed", single_test_report_url, reason, duration_seconds=duration)
                 exit(1)
             else:
-                print("Test passed.")
-                print("Reason:", reason)
-                print("Devices:", devices)
-                print("Report:", single_test_report_url)
+                print("✅ Test passed.")
                 generate_junit_xml(TEST_NAME, "passed", single_test_report_url, duration_seconds=duration)
                 exit(0)
 
