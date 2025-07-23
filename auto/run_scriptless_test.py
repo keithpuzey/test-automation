@@ -17,14 +17,14 @@ if not Perfectotestname:
     raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
 
 
-testurl = os.getenv("testurl")
+perfectotesturl = os.getenv("perfectotesturl")
 if not tesurl:
-    raise RuntimeError("❌ Environment variable 'testurl' is not set.")
+    raise RuntimeError("❌ Environment variable 'perfectotesturl' is not set.")
 
 
-wait = os.getenv("wait")
+perfectowait = os.getenv("perfectowait")
 if not wait:
-    raise RuntimeError("❌ Environment variable 'wait' is not set.")
+    raise RuntimeError("❌ Environment variable 'perfectowait' is not set.")
 
 
 # Config
@@ -36,7 +36,7 @@ TEST_NAME = Perfectotestname
 
 # Start the Perfecto script execution
 def start_test():
-    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public&param.testurl&param.wait'
+    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public&param.perfectotesturl&param.perfectowait'
     headers = {'Content-Type': 'application/json'}
 
     response = requests.post(url, headers=headers)
