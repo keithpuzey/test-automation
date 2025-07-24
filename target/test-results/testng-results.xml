@@ -2,48 +2,48 @@
 <testng-results ignored="1" total="2" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-24T16:07:36 BST" name="Web Demo Suite" finished-at="2025-07-24T16:07:36 BST" duration-ms="30">
+  <suite started-at="2025-07-24T16:09:29 BST" name="Web Demo Suite" finished-at="2025-07-24T16:09:29 BST" duration-ms="30">
     <groups>
       <group name="@Mobile">
         <method signature="src.main.resources.scenarios.webSearch.feature.Search doctor name from CSV( java.util.Map)[pri:1000, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8]" name="Search doctor name from CSV" class="com.qmetry.qaf.automation.step.client.DataDrivenScenario"/>
       </group> <!-- @Mobile -->
     </groups>
-    <test started-at="2025-07-24T16:07:36 BST" name="Web Scenarios Chrome Test" finished-at="2025-07-24T16:07:36 BST" duration-ms="30">
+    <test started-at="2025-07-24T16:09:29 BST" name="Web Scenarios Chrome Test" finished-at="2025-07-24T16:09:29 BST" duration-ms="30">
       <class name="com.qmetry.qaf.automation.step.client.DataDrivenScenario">
-        <test-method is-config="true" signature="setupSuit(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@28cda624]]" started-at="2025-07-24T16:07:36 BST" name="setupSuit" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:07:36 BST" duration-ms="7" status="PASS">
+        <test-method is-config="true" signature="setupSuit(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@69504ae9]]" started-at="2025-07-24T16:09:29 BST" name="setupSuit" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:09:29 BST" duration-ms="7" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@28cda624]]>
+                <![CDATA[org.testng.TestRunner@69504ae9]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSuit -->
-        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@28cda624]]" started-at="2025-07-24T16:07:36 BST" name="setupTest" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:07:36 BST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@69504ae9]]" started-at="2025-07-24T16:09:29 BST" name="setupTest" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:09:29 BST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@28cda624]]>
+                <![CDATA[org.testng.TestRunner@69504ae9]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@28cda624]]" started-at="2025-07-24T16:07:36 BST" name="setup" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:07:36 BST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@69504ae9]]" started-at="2025-07-24T16:09:29 BST" name="setup" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:09:29 BST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@28cda624]]>
+                <![CDATA[org.testng.TestRunner@69504ae9]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="Search doctor name from CSV( java.util.Map)[pri:1000, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8]" started-at="2025-07-24T16:07:36 BST" name="Search doctor name from CSV" data-provider="qaf-data-provider" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:07:36 BST" duration-ms="0" status="FAIL">
+        <test-method signature="Search doctor name from CSV( java.util.Map)[pri:1000, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8]" started-at="2025-07-24T16:09:29 BST" name="Search doctor name from CSV" data-provider="qaf-data-provider" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:09:29 BST" duration-ms="0" status="FAIL">
           <exception class="java.lang.RuntimeException">
             <message>
               <![CDATA[com.qmetry.qaf.automation.testng.DataProviderException: Error while fetching data from classpath:data/doctorNames.csv]]>
@@ -96,22 +96,22 @@ at com.qmetry.qaf.automation.util.CSVUtil.getCSVDataAsMap(CSVUtil.java:149)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Search doctor name from CSV -->
-        <test-method is-config="true" signature="afterClass(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@28cda624]]" started-at="2025-07-24T16:07:36 BST" name="afterClass" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:07:36 BST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="afterClass(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@69504ae9]]" started-at="2025-07-24T16:09:29 BST" name="afterClass" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:09:29 BST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@28cda624]]>
+                <![CDATA[org.testng.TestRunner@69504ae9]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method is-config="true" signature="afterTest(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@28cda624]]" started-at="2025-07-24T16:07:36 BST" name="afterTest" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:07:36 BST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterTest(org.testng.ITestContext)[pri:0, instance:com.qmetry.qaf.automation.step.client.DataDrivenScenario@3e8, instance params:[org.testng.TestRunner@69504ae9]]" started-at="2025-07-24T16:09:29 BST" name="afterTest" test-instance-name="Search doctor name from CSV" finished-at="2025-07-24T16:09:29 BST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@28cda624]]>
+                <![CDATA[org.testng.TestRunner@69504ae9]]>
               </value>
             </param>
           </params>

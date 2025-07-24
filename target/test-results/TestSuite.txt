@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.345 s <<< FAILURE! -- in TestSuite
-com.qmetry.qaf.automation.step.client.DataDrivenScenario.Search doctor name from CSV -- Time elapsed: 0.287 s <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.636 s <<< FAILURE! -- in TestSuite
+com.qmetry.qaf.automation.step.client.DataDrivenScenario.Search doctor name from CSV -- Time elapsed: 0.570 s <<< FAILURE!
 java.lang.RuntimeException: com.qmetry.qaf.automation.testng.DataProviderException: Error while fetching data from classpath:data/doctorNames.csv
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:57)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:157)

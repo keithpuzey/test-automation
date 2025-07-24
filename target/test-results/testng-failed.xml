@@ -20,8 +20,8 @@
           <include name="afterTest"/>
           <include name="afterMethod"/>
           <include name="setupTest"/>
-          <include name="setupMethod"/>
           <include name="Search doctor name from CSV"/>
+          <include name="setupMethod"/>
           <include name="setupSuit"/>
           <include name="setup"/>
           <include name="afterClass"/>
