@@ -14,15 +14,17 @@ public class SearchDoctorSteps {
         new WebDriverTestBase().getDriver().get("https://www.topdoctors.co.uk/doctor/");
     }
 
-    @QAFTestStep(description = "I search for \"{doctorName}\"")
-    public void searchDoctor(String doctorName) {
-        QAFWebDriver driver = new WebDriverTestBase().getDriver();
+ @QAFTestStep(description = "I search for \"{doctorName}\"")
+public void searchDoctor(String doctorName) {
+    QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
-        // Wait for and find the input using aria-label
-        QAFWebElement searchInput = driver.waitForElement("css=input[aria-label='Specialty / illness / doctor name']");
-        searchInput.clear();
-        searchInput.sendKeys(doctorName);
-        searchInput.sendKeys(Keys.ENTER);
+    // Locate the input field
+    QAFWebElement searchInput = driver.findElement("css=input[aria-label='Specialty / illness / doctor name']");
+    searchInput.clear();
+    searchInput.sendKeys(doctorName);
+
+    // Trigger search
+    searchInput.sendKeys(Keys.ENTER);
     }
 
     @QAFTestStep(description = "I wait between searches")
@@ -30,7 +32,6 @@ public class SearchDoctorSteps {
         try {
             Thread.sleep(5000); // wait 5 seconds
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
             e.printStackTrace();
         }
     }
