@@ -19,11 +19,12 @@ public class SearchDoctorSteps {
     public void searchDoctor(String doctorName) {
         QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
-        QAFWebElement searchInput = driver.findElement("css=input[name='name']");
+        // Use aria-label to locate the input
+        QAFWebElement searchInput = driver.findElement("css=input[aria-label='Specialty / illness / doctor name']");
         searchInput.clear();
         searchInput.sendKeys(doctorName);
 
-        // Submit the search (modify if needed to trigger the search)
+        // If pressing ENTER doesn't work, we can also click a search button or wait
         searchInput.sendKeys(Keys.ENTER);
     }
 
