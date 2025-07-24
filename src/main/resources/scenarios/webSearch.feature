@@ -1,8 +1,6 @@
 @Mobile
-Feature: Bing Search
-
-  @SearchDoctors
-  Feature: TC43 - Find a Doctor
+@SearchDoctors
+Feature: TC43 - Find a Doctor
 
   Scenario Outline: Search doctor name from CSV
     Given I navigate to the TopDoctors site
