@@ -90,7 +90,17 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.6.4</version>
 		</dependency>
-
+		<dependency>
+		  <groupId>io.cucumber</groupId>
+		  <artifactId>cucumber-java</artifactId>
+		  <version>6.11.0</version> <!-- or match Quantum version -->
+		</dependency>
+		<dependency>
+		  <groupId>io.cucumber</groupId>
+		  <artifactId>cucumber-junit</artifactId>
+		  <version>6.11.0</version>
+		  <scope>test</scope>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
