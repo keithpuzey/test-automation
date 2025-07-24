@@ -17,9 +17,9 @@ if not Perfectotestname:
     raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
 
 
-perfectotesturl = os.getenv("perfectotesturl")
-if not perfectotesturl:
-    raise RuntimeError("❌ Environment variable 'perfectotesturl' is not set.")
+PERFECTOTESTURL = os.getenv("PERFECTOTESTURL)
+if not PERFECTOTESTURL:
+    raise RuntimeError("❌ Environment variable 'PERFECTOTESTURL' is not set.")
 
 # Config
 perfecto_cloud = 'demo.perfectomobile.com'
@@ -30,7 +30,7 @@ TEST_NAME = Perfectotestname
 
 # Start the Perfecto script execution
 def start_test():
-    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public&param.perfectotesturl'
+    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public&param.PERFECTOTESTURL'
     headers = {'Content-Type': 'application/json'}
 
     response = requests.post(url, headers=headers)
