@@ -1,21 +1,20 @@
 package com.quantum.steps;
+
 import org.openqa.selenium.Keys;
 
+import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.ui.WebDriverTestBase;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebElement;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebDriver;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
-import cucumber.api.java.en.Then;
 
 public class SearchDoctorSteps {
 
-    @Given("^I navigate to the TopDoctors site$")
+    @QAFTestStep(description = "I navigate to the TopDoctors site")
     public void goToTopDoctors() {
         new WebDriverTestBase().getDriver().get("https://www.topdoctors.co.uk/doctor/");
     }
 
-    @When("^I search for \"([^\"]*)\"$")
+    @QAFTestStep(description = "I search for \"{doctorName}\"")
     public void searchDoctor(String doctorName) {
         QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
@@ -24,14 +23,14 @@ public class SearchDoctorSteps {
         searchInput.clear();
         searchInput.sendKeys(doctorName);
 
-        // If pressing ENTER doesn't work, we can also click a search button or wait
+        // Press ENTER to submit search
         searchInput.sendKeys(Keys.ENTER);
     }
 
-    @Then("^I wait between searches$")
+    @QAFTestStep(description = "I wait between searches")
     public void waitBetween() {
         try {
-            Thread.sleep(5000); // 5 second wait
+            Thread.sleep(5000); // wait 5 seconds
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
