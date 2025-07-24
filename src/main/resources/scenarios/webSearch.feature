@@ -7,7 +7,7 @@ Feature: TC43 - Find a Doctor
     When I search for "<doctorName>"
     Then I wait between searches
     Examples:
-      | doctorName | recDescription 	| searchKey               | searchResult                  |
-      | Bill     | First Data Set	| perfecto mobile quantum       | Quantum |
-      | Tom     | Second Data Set 	|perfecto mobile quantum| perfecto |
+      | doctorName | 
+      | Bill     |
+      | Tom     | 
 
