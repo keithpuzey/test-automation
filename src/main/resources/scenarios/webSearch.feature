@@ -4,6 +4,10 @@ Feature: TC43 - Find a Doctor
 
   Scenario Outline: Search doctor name from CSV
     Given I navigate to the TopDoctors site
-    When I search for "123"
+    When I search for "<doctorName>"
     Then I wait between searches
+    Examples:
+      | doctorName | recDescription 	| searchKey               | searchResult                  |
+      | 1     | First Data Set	| perfecto mobile quantum       | Quantum |
+      | 2     | Second Data Set 	|perfecto mobile quantum| perfecto |
 
