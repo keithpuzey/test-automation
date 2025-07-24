@@ -22,7 +22,7 @@ if not PERFECTOTESTURL:
     raise RuntimeError("❌ Environment variable 'PERFECTOTESTURL' is not set.")
 
 # Config
-perfecto_cloud = 'demo.perfectomobile.com'
+perfecto_cloud = 'web-demo-fra.perfectomobile.com'
 script_key = Perfectotest
 RESULT_DIR = "test-results"
 RESULT_FILE = os.path.join(RESULT_DIR, "perfecto-result.xml")
