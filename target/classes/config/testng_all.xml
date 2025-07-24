@@ -6,19 +6,19 @@
 	</listeners>
 
 	<test name="Web Scenarios Chrome Test" enabled="true" verbose="0">
-		<parameter name="perfecto.capabilities.platformName" value="Windows"/>
-		<parameter name="perfecto.capabilities.platformVersion"
-			value="10"/>
+		<parameter name="perfecto.capabilities.platformName" value="android"/>
+<!--		<parameter name="perfecto.capabilities.platformVersion"
+			value="10"/> -->
 		<parameter name="perfecto.capabilities.browserName" value="Chrome"/>
 		<parameter name="perfecto.capabilities.browserVersion"
 			value="latest"/>
-		<parameter name="perfecto.capabilities.resolution" value="1280x1024"/>
-		<parameter name="perfecto.capabilities.location" value="US East"/>
+<!--		<parameter name="perfecto.capabilities.resolution" value="1280x1024"/> -->
+<!--		<parameter name="perfecto.capabilities.location" value="US East"/> -->
 <!--		<parameter name="perfecto.capabilities.deviceType" value="Web"></parameter>-->
 		<parameter name="env.resources" value="src/main/resources/common" />
 		<groups>
 			<run>
-				<include name="@Web" />
+				<include name="@Mobile" />
 			</run>
 		</groups>
 		<classes>
@@ -33,7 +33,7 @@
 		<parameter name="perfecto.capabilities.automationName" value="Appium"/>
 		<groups>
 			<run>
-				<include name="@Web" />
+				<include name="@Mobile" />
 				<include name="@first" />
 				<include name="@sampleTestCase" />
 				<include name="@locators" />

@@ -1,6 +1,8 @@
-/Users/keithpuzey/github/Demo/quantum-demo/src/main/java/com/quantum/steps/GoogleStepDefs.java
-/Users/keithpuzey/github/Demo/quantum-demo/src/main/java/com/quantum/steps/CommonStepsDefs.java
-/Users/keithpuzey/github/Demo/quantum-demo/src/main/java/com/quantum/pages/ExpenseTrackerLoginPage.java
-/Users/keithpuzey/github/Demo/quantum-demo/src/main/java/com/quantum/pages/GooglePage.java
-/Users/keithpuzey/github/Demo/quantum-demo/src/main/java/com/quantum/pages/ExpenseTrackerHomePage.java
-/Users/keithpuzey/github/Demo/quantum-demo/src/main/java/com/quantum/steps/ExpenseTrackerSteps.java
+/Users/keithpuzey/github/Demo/test-automation/src/main/java/com/quantum/steps/BingStepDefs.java
+/Users/keithpuzey/github/Demo/test-automation/src/main/java/com/quantum/pages/ExpenseTrackerLoginPage.java
+/Users/keithpuzey/github/Demo/test-automation/src/main/java/com/quantum/pages/GooglePage.java
+/Users/keithpuzey/github/Demo/test-automation/src/main/java/com/quantum/steps/ExpenseTrackerSteps.java
+/Users/keithpuzey/github/Demo/test-automation/src/main/java/com/quantum/steps/SearchDoctorSteps.java
+/Users/keithpuzey/github/Demo/test-automation/src/main/java/com/quantum/pages/ExpenseTrackerHomePage.java
+/Users/keithpuzey/github/Demo/test-automation/src/main/java/com/quantum/steps/GoogleStepDefs.java
+/Users/keithpuzey/github/Demo/test-automation/src/main/java/com/quantum/steps/CommonStepsDefs.java

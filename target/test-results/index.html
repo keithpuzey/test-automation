@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Web_Demo_Suite" class="navigator-link">
-              <span class="suite-name border-passed">Web Demo Suite</span>
+              <span class="suite-name border-failed">Web Demo Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -60,7 +60,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="group-Web_Demo_Suite" class="navigator-link ">
-                    <span>0 groups</span>
+                    <span>1 group</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">0 methods,   </span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Web_Demo_Suite" class="hide-methods failed suite-Web_Demo_Suite"> (hide)</a> <!-- hide-methods failed suite-Web_Demo_Suite -->
+                      <a href="#" panel-name="suite-Web_Demo_Suite" class="show-methods failed suite-Web_Demo_Suite"> (show)</a> <!-- show-methods failed suite-Web_Demo_Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Web_Demo_Suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Web_Demo_Suite" title="com.qmetry.qaf.automation.step.client.DataDrivenScenario" class="method navigator-link" hash-for-method="Search doctor name from CSV">Search doctor name from CSV</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Web_Demo_Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -104,10 +118,46 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Web_Demo_Suite" class="panel Web_Demo_Suite">
+          <div class="suite-Web_Demo_Suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.qmetry.qaf.automation.step.client.DataDrivenScenario</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="Search doctor name from CSV">
+                  </a> <!-- Search doctor name from CSV -->
+                  <span class="method-name">Search doctor name from CSV</span>
+                  <div class="stack-trace">java.lang.RuntimeException: com.qmetry.qaf.automation.testng.DataProviderException: Error while fetching data from classpath:data/doctorNames.csv
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.qmetry.qaf.automation.testng.DataProviderException: Error while fetching data from classpath:data/doctorNames.csv
+	at com.qmetry.qaf.automation.util.CSVUtil.getCSVDataAsMap(CSVUtil.java:183)
+	at com.qmetry.qaf.automation.testng.dataprovider.QAFInetrceptableDataProvider.getData(QAFInetrceptableDataProvider.java:519)
+	at com.qmetry.qaf.automation.testng.dataprovider.QAFInetrceptableDataProvider.getTestDataForBDDScenarios(QAFInetrceptableDataProvider.java:117)
+	at com.qmetry.qaf.automation.testng.dataprovider.QAFInetrceptableDataProvider.interceptedDataProvider(QAFInetrceptableDataProvider.java:229)
+	... 19 more
+Caused by: java.io.FileNotFoundException: classpath:data/doctorNames.csv (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:157)
+	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)
+	at com.qmetry.qaf.automation.util.CSVUtil.getCSVDataAsMap(CSVUtil.java:149)
+	... 29 more
+... Removed 22 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Web_Demo_Suite-class-failed -->
         </div> <!-- panel Web_Demo_Suite -->
         <div panel-name="test-xml-Web_Demo_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/Users/keithpuzey/github/Demo/quantum-demo/src/main/resources/config/testng_all.xml</span>
+            <span class="header-content">/Users/keithpuzey/github/Demo/test-automation/src/main/resources/config/testng_all.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -123,16 +173,13 @@
         &lt;selector-class name=&quot;com.qmetry.qaf.automation.testng.pro.QAFMethodSelector&quot; priority=&quot;0&quot;/&gt;
       &lt;/method-selector&gt;
     &lt;/method-selectors&gt;
-    &lt;parameter name=&quot;perfecto.capabilities.platformVersion&quot; value=&quot;10&quot;/&gt;
     &lt;parameter name=&quot;perfecto.capabilities.browserName&quot; value=&quot;Chrome&quot;/&gt;
     &lt;parameter name=&quot;env.resources&quot; value=&quot;src/main/resources/common&quot;/&gt;
     &lt;parameter name=&quot;perfecto.capabilities.browserVersion&quot; value=&quot;latest&quot;/&gt;
-    &lt;parameter name=&quot;perfecto.capabilities.location&quot; value=&quot;US East&quot;/&gt;
-    &lt;parameter name=&quot;perfecto.capabilities.resolution&quot; value=&quot;1280x1024&quot;/&gt;
-    &lt;parameter name=&quot;perfecto.capabilities.platformName&quot; value=&quot;Windows&quot;/&gt;
+    &lt;parameter name=&quot;perfecto.capabilities.platformName&quot; value=&quot;android&quot;/&gt;
     &lt;groups&gt;
       &lt;run&gt;
-        &lt;include name=&quot;@Web&quot;/&gt;
+        &lt;include name=&quot;@Mobile&quot;/&gt;
       &lt;/run&gt;
     &lt;/groups&gt;
     &lt;classes&gt;
@@ -160,6 +207,14 @@
             <span class="header-content">Groups for Web Demo Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">@Mobile</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">Search doctor name from CSV</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-Web_Demo_Suite" class="panel">
@@ -176,12 +231,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(0);
+data.addRows(1);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'Search doctor name from CSV')
+data.setCell(0, 2, 'com.qmetry.qaf.automation.step.client.DataDrivenScenario')
+data.setCell(0, 3, 0);
 window.suiteTableData['Web_Demo_Suite']= { tableData: data, tableDiv: 'times-div-Web_Demo_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 0 ms</span>
+              <span class="suite-total-time">Total running time: 30 ms</span>
               <div id="times-div-Web_Demo_Suite">
               </div> <!-- times-div-Web_Demo_Suite -->
             </div> <!-- times-div -->
@@ -196,9 +255,16 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Web_Demo_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">1 ignored method</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">com.qmetry.qaf.automation.step.client.DataDrivenScenario</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">scenario</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Web_Demo_Suite" class="panel">
@@ -206,6 +272,28 @@ return data;
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.qmetry.qaf.automation.step.client.DataDrivenScenario</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">setupSuit(org.testng.TestRunner@28cda624)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+              <div class="configuration-test before">
+                <span class="method-name">setupTest(org.testng.TestRunner@28cda624)</span>
+                <span class="method-start">15 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-class before">
+                <span class="method-name">setup(org.testng.TestRunner@28cda624)</span>
+                <span class="method-start">19 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class after">
+                <span class="method-name">afterClass(org.testng.TestRunner@28cda624)</span>
+                <span class="method-start">41 ms</span>
+              </div> <!-- configuration-class after -->
+              <div class="configuration-test after">
+                <span class="method-name">afterTest(org.testng.TestRunner@28cda624)</span>
+                <span class="method-start">42 ms</span>
+              </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

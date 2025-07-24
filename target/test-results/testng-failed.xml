@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="100" parallel="tests" name="Failed suite [Web Demo Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="com.quantum.listeners.QuantumReportiumListener"/>
+  </listeners>
+  <test thread-count="100" parallel="tests" name="Web Scenarios Chrome Test(failed)" verbose="0">
+    <parameter name="perfecto.capabilities.browserName" value="Chrome"/>
+    <parameter name="env.resources" value="src/main/resources/common"/>
+    <parameter name="perfecto.capabilities.browserVersion" value="latest"/>
+    <parameter name="perfecto.capabilities.platformName" value="android"/>
+    <groups>
+      <run>
+        <include name="@Mobile"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.qmetry.qaf.automation.step.client.DataDrivenScenario">
+        <methods>
+          <include name="afterTest"/>
+          <include name="afterMethod"/>
+          <include name="setupTest"/>
+          <include name="setupMethod"/>
+          <include name="Search doctor name from CSV"/>
+          <include name="setupSuit"/>
+          <include name="setup"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- com.qmetry.qaf.automation.step.client.DataDrivenScenario -->
+    </classes>
+  </test> <!-- Web Scenarios Chrome Test(failed) -->
+</suite> <!-- Failed suite [Web Demo Suite] -->
