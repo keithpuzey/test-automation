@@ -9,4 +9,4 @@ Feature: Bing Search
     When I search for "<doctorName>"
     Then I wait between searches
 
-    Examples: {"datafile" : "data/doctorNames.csv"}
+    Examples: {"datafile" : "doctorNames.csv"}
