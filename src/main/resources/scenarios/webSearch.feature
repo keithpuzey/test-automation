@@ -7,4 +7,4 @@ Feature: TC43 - Find a Doctor
     When I search for "<doctorName>"
     Then I wait between searches
 
-  Examples: {"datafile": 'classpath:data/doctorNames.csv'}
+  Examples: {'datafile': 'data/doctorNames.csv'}
