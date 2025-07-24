@@ -18,12 +18,10 @@ public class SearchDoctorSteps {
     public void searchDoctor(String doctorName) {
         QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
-        // Use aria-label to locate the input
-        QAFWebElement searchInput = driver.findElement("css=input[aria-label='Specialty / illness / doctor name']");
+        // Wait for and find the input using aria-label
+        QAFWebElement searchInput = driver.waitForElement("css=input[aria-label='Specialty / illness / doctor name']");
         searchInput.clear();
         searchInput.sendKeys(doctorName);
-
-        // Press ENTER to submit search
         searchInput.sendKeys(Keys.ENTER);
     }
 
@@ -32,6 +30,7 @@ public class SearchDoctorSteps {
         try {
             Thread.sleep(5000); // wait 5 seconds
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             e.printStackTrace();
         }
     }
