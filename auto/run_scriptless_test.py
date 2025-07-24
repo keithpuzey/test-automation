@@ -30,7 +30,7 @@ TEST_NAME = Perfectotestname
 
 # Start the Perfecto script execution
 def start_test():
-    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public&param.PERFECTOTESTURL=PERFECTOTESTURL'
+    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public&param.PERFECTOTESTURL={PERFECTOTESTURL}'
     headers = {'Content-Type': 'application/json'}
 
     response = requests.post(url, headers=headers)
