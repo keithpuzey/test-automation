@@ -8,6 +8,6 @@ Feature: TC43 - Find a Doctor
     Then I wait between searches
     Examples:
       | doctorName | recDescription 	| searchKey               | searchResult                  |
-      | 1     | First Data Set	| perfecto mobile quantum       | Quantum |
-      | 2     | Second Data Set 	|perfecto mobile quantum| perfecto |
+      | Bill     | First Data Set	| perfecto mobile quantum       | Quantum |
+      | Tom     | Second Data Set 	|perfecto mobile quantum| perfecto |
 
