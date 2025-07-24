@@ -1,0 +1,138 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Web Demo Suite" verbose="0" parallel="tests"
+	thread-count="100">
+	<listeners>
+		<listener class-name="com.quantum.listeners.QuantumReportiumListener" />
+	</listeners>
+
+	<test name="Web Scenarios Chrome Test" enabled="true" verbose="0">
+		<parameter name="perfecto.capabilities.platformName" value="Windows"/>
+		<parameter name="perfecto.capabilities.platformVersion"
+			value="10"/>
+		<parameter name="perfecto.capabilities.browserName" value="Chrome"/>
+		<parameter name="perfecto.capabilities.browserVersion"
+			value="latest"/>
+		<parameter name="perfecto.capabilities.resolution" value="1280x1024"/>
+		<parameter name="perfecto.capabilities.location" value="US East"/>
+<!--		<parameter name="perfecto.capabilities.deviceType" value="Web"></parameter>-->
+		<parameter name="env.resources" value="src/main/resources/common" />
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory" />
+		</classes>
+	</test>
+	<test name="Web Scenarios Android Test" enabled="false"
+		thread-count="3">
+		<parameter name="perfecto.capabilities.model" value="(?!.*Tab).*"></parameter>
+		<parameter name="perfecto.additional.capabilities" value="{'perfecto:openDeviceTimeout':15}" />
+		<parameter name="perfecto.capabilities.automationName" value="Appium"/>
+		<groups>
+			<run>
+				<include name="@Web" />
+				<include name="@first" />
+				<include name="@sampleTestCase" />
+				<include name="@locators" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory" />
+		</classes>
+	</test>
+	<test name="Web Scenarios iOS Test" enabled="false" thread-count="3">
+		<parameter name="perfecto.capabilities.model" value="iPhone.*"></parameter>
+		 <parameter name="perfecto.additional.capabilities" value="{'perfecto:openDeviceTimeout':15}" />
+		<parameter name="perfecto.capabilities.browserName" value="Safari"></parameter>
+		<parameter name="perfecto.capabilities.automationName" value="Appium"/>
+		<groups>
+			<run>
+				<include name="@Web" />
+				<include name="@first" />
+				<include name="@sampleTestCase" />
+				<include name="@locators" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory" />
+		</classes>
+	</test>
+
+    <test name="IOS Expense Tracker Test" enabled="false">
+        <parameter name="perfecto.capabilities.model" value="iPhone.*"></parameter>
+         <parameter name="perfecto.additional.capabilities" value="{'perfecto:openDeviceTimeout':15}" />
+        <parameter name="driver.capabilities.app" value="PUBLIC:ExpenseTracker/Native/iOS/InvoiceApp1.0.ipa"></parameter>
+        <parameter name="driver.capabilities.bundleId" value="io.perfecto.expense.tracker"/>
+        <parameter name="driver.capabilities.iOSResign" value="true"/>
+        <parameter name="driver.name" value="perfectoDriver"/>
+        <parameter name="env.resources" value="src/main/resources/ios"/>
+
+        <groups>
+            <run>
+                <include name="@appium"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory"/>
+        </classes>
+    </test>
+    <test name="Android Expense Tracker Test" enabled="false">
+        <parameter name="perfecto.capabilities.model" value="(?!.*Tab).*"></parameter>
+        <parameter name="perfecto.additional.capabilities" value="{'perfecto:openDeviceTimeout':15}" />
+        <parameter name="driver.capabilities.app" value="PUBLIC:ExpenseTracker/Native/ExpenseAppVer1.0.apk"></parameter>
+        <parameter name="driver.capabilities.appPackage" value="io.perfecto.expense.tracker"/>
+        <parameter name="driver.name" value="perfectoDriver"/>
+        <parameter name="env.resources" value="src/main/resources/android"/>
+        <groups>
+            <run>
+                <include name="@appium"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory"/>
+        </classes>
+    </test>
+    
+    <test name="Android Emulator Expense Tracker Test" enabled="false">
+        <parameter name="driver.additional.capabilities" value="{'perfecto:useVirtualDevice':true}" />
+		<parameter name="driver.capabilities.platformName" value="Android"/>
+		<parameter name="driver.capabilities.platformVersion" value="latest"/>
+		<parameter name="perfecto.capabilities.model" value="pixel 6"/>
+		<parameter name="driver.capabilities.app" value="PUBLIC:ExpenseTracker/Native/ExpenseAppVer1.0.apk"/>
+		<parameter name="driver.capabilities.appPackage" value="io.perfecto.expense.tracker"/>
+		<parameter name="driver.name" value="perfectoDriver"/>
+		<parameter name="env.resources" value="src/main/resources/android"/>
+        <groups>
+            <run>
+                <include name="@appium"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory"/>
+        </classes>
+    </test>
+    
+    <test name="iOS Simulator Expense Tracker Test" enabled="false">
+        <parameter name="driver.additional.capabilities" value="{'perfecto:useVirtualDevice':true}" />
+		<parameter name="driver.capabilities.platformName" value="iOS"/>
+		<parameter name="driver.capabilities.platformVersion" value="latest"/>
+		<parameter name="driver.capabilities.deviceName" value="iPhone 15"/>
+		<parameter name="driver.capabilities.app" value="PUBLIC:ExpenseTracker/Native/iOS/InvoiceApp.zip"/>
+		<parameter name="driver.capabilities.bundleId" value="io.perfecto.expense.tracker"/>
+		<parameter name="driver.name" value="perfectoDriver"/>
+		<parameter name="env.resources" value="src/main/resources/ios"/>
+        <groups>
+            <run>
+                <include name="@appium"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory"/>
+        </classes>
+    </test>
+</suite>
