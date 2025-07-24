@@ -23,7 +23,7 @@ if not perfectotesturl:
 
 
 perfectowait = os.getenv("perfectowait")
-if not perfectowaitwait:
+if not perfectowait:
     raise RuntimeError("❌ Environment variable 'perfectowait' is not set.")
 
 
