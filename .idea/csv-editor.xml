@@ -17,6 +17,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/main/resources/doctorNames.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/main/resources/scenarios/doctorNames.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
