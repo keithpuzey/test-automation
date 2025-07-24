@@ -25,13 +25,14 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
-			</resource>
-			<resource>
-      		  <directory>src/main/resources</directory>
 				<includes>
-        			<include>**/*.csv</include>
-      			</includes>
-    		</resource>
+                  <include>**/*.csv</include>
+                  <include>**/*.properties</include>
+                  <include>**/*.xml</include>
+                  <include>**/*.json</include>
+                  <include>**/*.feature</include>
+                </includes>
+			</resource>
 		</resources>
 
 		<plugins>
