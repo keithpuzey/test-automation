@@ -12,6 +12,8 @@ public class SearchDoctorSteps {
 
     @Given("^I navigate to the TopDoctors site$")
     public void goToTopDoctors() {
+        URL resource = getClass().getClassLoader().getResource("data/doctorNames.csv");
+        System.out.println("CSV Path: " + (resource != null ? resource.getPath() : "Not Found"));
         new WebDriverTestBase().getDriver().get("https://www.topdoctors.co.uk/doctor/");
     }
 
