@@ -17,7 +17,7 @@ if not Perfectotestname:
     raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
 
 
-PERFECTOTESTURL = os.getenv("PERFECTOTESTURL)
+PERFECTOTESTURL = os.getenv("PERFECTOTESTURL")
 if not PERFECTOTESTURL:
     raise RuntimeError("❌ Environment variable 'PERFECTOTESTURL' is not set.")
 
