@@ -14,16 +14,24 @@ public class SearchDoctorSteps {
         new WebDriverTestBase().getDriver().get("https://www.topdoctors.co.uk/doctor/");
     }
 
-    @QAFTestStep(description = "I search for {0}")
-    public void searchDoctor(String doctorName) {
-        QAFWebDriver driver = new WebDriverTestBase().getDriver();
-    // Wait for the input to be visible (optional but helpful)
-        QAFWebElement searchInput = driver.findElement("css=#input-specialty > div > input");
+@QAFTestStep(description = "I search for {0}")
+public void searchDoctor(String doctorName) {
+    QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
-        searchInput.clear();                     // Clear existing text if any
-        searchInput.sendKeys(doctorName);        // Type doctor name
-        searchInput.sendKeys(Keys.ENTER);        // Submit the search
-    }
+    // Step 1: Click the placeholder to reveal the input field
+    QAFWebElement placeholder = driver.findElement("css=div.mobile-input-placeholder");
+    placeholder.click();
+
+    // Step 2: Wait for the input to appear
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='text']")));
+
+    // Step 3: Type the doctor name and press Enter
+    QAFWebElement searchInput = (QAFWebElement) driver.findElement("css=input[type='text']");
+    searchInput.clear();
+    searchInput.sendKeys(doctorName);
+    searchInput.sendKeys(Keys.ENTER);
+}
 
     @QAFTestStep(description = "I wait between searches")
     public void waitBetweenSearches() {
