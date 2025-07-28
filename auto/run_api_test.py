@@ -120,7 +120,7 @@ def generate_junit_xml(test_name, final_result, test_run_url, duration_seconds):
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
-    
+
 
 
 def main():
