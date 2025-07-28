@@ -26,11 +26,16 @@ public class SearchDoctorSteps {
         WebDriver seleniumDriver = (WebDriver) driver;
 
         WebDriverWait wait = new WebDriverWait(seleniumDriver, Duration.ofSeconds(10));
-        // Try locating by placeholder text instead of a strict CSS path
-        By inputLocator = By.xpath("//input[@placeholder='Specialty / illness / doctor name']");
-        System.out.println("Page source:\n" + driver.getPageSource());
-        wait.until(ExpectedConditions.visibilityOfElementLocated(inputLocator));
-        QAFWebElement searchInput = (QAFWebElement) driver.findElement(inputLocator);
+    // Tap the mobile placeholder to activate the search box
+    By placeholderLocator = By.xpath("//div[contains(@class,'mobile-input-placeholder')]");
+    wait.until(ExpectedConditions.elementToBeClickable(placeholderLocator));
+    QAFWebElement placeholder = (QAFWebElement) driver.findElement(placeholderLocator);
+    placeholder.click();
+
+    // Wait for real input field to appear
+    By realInputLocator = By.xpath("//input[@type='text' and @placeholder]");
+    wait.until(ExpectedConditions.visibilityOfElementLocated(realInputLocator));
+    QAFWebElement searchInput = (QAFWebElement) driver.findElement(realInputLocator);
         searchInput.clear();
         searchInput.sendKeys(doctorName);
         searchInput.sendKeys(Keys.ENTER);
