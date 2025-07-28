@@ -107,20 +107,23 @@ def generate_junit_xml(test_name, final_result, test_run_url, duration_seconds):
         testsuite,
         "testcase",
         classname="Runscope",
-        name=f"{test_name}",
+        name=test_name,
         time=f"{duration_seconds:.3f}"
     )
+
+    # Add a <properties> element with a custom property
+    properties = ET.SubElement(testcase, "properties")
+    ET.SubElement(properties, "property", name="Runscope Report URL", value=test_run_url)
 
     if final_result != "pass":
         ET.SubElement(testcase, "failure", message=f"API Monitoring test result: {final_result}")
 
-    # Add CDATA-wrapped test report URL
+    # Optional: still include system-out with the URL as text for visibility
     ET.SubElement(testcase, "system-out").text = f"<![CDATA[Test Report URL: {test_run_url}]]>"
 
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
-
 
 
 def main():
