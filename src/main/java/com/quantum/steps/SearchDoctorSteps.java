@@ -26,9 +26,9 @@ public class SearchDoctorSteps {
         WebDriver seleniumDriver = (WebDriver) driver;
 
         WebDriverWait wait = new WebDriverWait(seleniumDriver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#input-specialty > div > input")));
-
-        QAFWebElement searchInput = driver.findElement("css=#input-specialty > div > input");
+        // Try locating by placeholder text instead of a strict CSS path
+        By inputLocator = By.xpath("//input[@placeholder='Find doctors, clinics, and medical centres']");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(inputLocator));
         searchInput.clear();
         searchInput.sendKeys(doctorName);
         searchInput.sendKeys(Keys.ENTER);

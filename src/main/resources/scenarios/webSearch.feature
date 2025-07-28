@@ -8,6 +8,6 @@ Feature: TC43 - Find a Doctor
     Then I wait between searches
     Examples:
       | doctorName | 
-      | Bill     |
-      | Tom     | 
-
+      | Ms Anna Bridgens |
+      | Mr Chris Nicolay |
+      | Dr Julian Emmanuel |
