@@ -1,9 +1,12 @@
 package com.quantum.steps;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.ui.WebDriverTestBase;
@@ -17,29 +20,24 @@ public class SearchDoctorSteps {
         new WebDriverTestBase().getDriver().get("https://www.topdoctors.co.uk/doctor/");
     }
 
-@QAFTestStep(description = "I search for {0}")
-public void searchDoctor(String doctorName) {
-    QAFWebDriver driver = new WebDriverTestBase().getDriver();
+    @QAFTestStep(description = "I search for {0}")
+    public void searchDoctor(String doctorName) {
+        QAFWebDriver driver = new WebDriverTestBase().getDriver();
+        WebDriver seleniumDriver = (WebDriver) driver.getWrappedDriver(); // safest
 
-    // Step 1: Click the placeholder to reveal the input field
-    QAFWebElement placeholder = driver.findElement("css=div.mobile-input-placeholder");
-    placeholder.click();
+        WebDriverWait wait = new WebDriverWait(seleniumDriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#input-specialty > div > input")));
 
-    // Step 2: Wait for the input to appear
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='text']")));
-
-    // Step 3: Type the doctor name and press Enter
-    QAFWebElement searchInput = (QAFWebElement) driver.findElement("css=input[type='text']");
-    searchInput.clear();
-    searchInput.sendKeys(doctorName);
-    searchInput.sendKeys(Keys.ENTER);
-}
+        QAFWebElement searchInput = driver.findElement("css=#input-specialty > div > input");
+        searchInput.clear();
+        searchInput.sendKeys(doctorName);
+        searchInput.sendKeys(Keys.ENTER);
+    }
 
     @QAFTestStep(description = "I wait between searches")
     public void waitBetweenSearches() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(5000); // Can also use QAF’s wait mechanism if preferred
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
