@@ -2,11 +2,9 @@
 Feature: TC43 - Find a Doctor
 
   Scenario: Search for doctor
+    Given I navigate to the TopDoctors site
     When I search for "${doctorName}"
     Then I wait between searches
 
-  Scenario: Search for doctor Tom
-    When I search for "Tom"
-    Then I wait between searches
 
     @DataFile: data/doctors.csv
