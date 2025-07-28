@@ -29,6 +29,7 @@ public class SearchDoctorSteps {
         // Try locating by placeholder text instead of a strict CSS path
         By inputLocator = By.xpath("//input[@placeholder='Find doctors, clinics, and medical centres']");
         wait.until(ExpectedConditions.visibilityOfElementLocated(inputLocator));
+        QAFWebElement searchInput = (QAFWebElement) driver.findElement(inputLocator);
         searchInput.clear();
         searchInput.sendKeys(doctorName);
         searchInput.sendKeys(Keys.ENTER);
