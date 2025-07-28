@@ -23,7 +23,7 @@ public class SearchDoctorSteps {
     @QAFTestStep(description = "I search for {0}")
     public void searchDoctor(String doctorName) {
         QAFWebDriver driver = new WebDriverTestBase().getDriver();
-        WebDriver seleniumDriver = (WebDriver) driver.getWrappedDriver(); // safest
+        WebDriver seleniumDriver = (WebDriver) driver;
 
         WebDriverWait wait = new WebDriverWait(seleniumDriver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#input-specialty > div > input")));
