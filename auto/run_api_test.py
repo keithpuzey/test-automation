@@ -113,7 +113,7 @@ def generate_junit_xml(test_name, final_result, test_run_url, duration_seconds):
 
     # Add a <properties> element with a custom property
     properties = ET.SubElement(testcase, "properties")
-    ET.SubElement(properties, "property", name="Runscope Report URL", value=test_run_url)
+    ET.SubElement(properties, "property", name="Device", value=test_run_url)
 
     if final_result != "pass":
         ET.SubElement(testcase, "failure", message=f"API Monitoring test result: {final_result}")
