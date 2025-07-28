@@ -1,0 +1,12 @@
+@Mobile @SearchDoctors
+Feature: TC43 - Find a Doctor
+
+  Scenario: Search for doctor
+    When I search for "${doctorName}"
+    Then I wait between searches
+
+  Scenario: Search for doctor Tom
+    When I search for "Tom"
+    Then I wait between searches
+
+    @DataFile: data/doctors.csv

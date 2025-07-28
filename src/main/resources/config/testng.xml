@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://github.com/qmetry/qaf/blob/master/src/resources/testng-1.0.dtd">
+<suite name="Quantum BDD Suite" verbose="1" parallel="false">
+  <test name="Find Doctor Test">
+    <classes>
+      <class name="com.qmetry.qaf.automation.step.client.Scenario"/>
+    </classes>
+    <parameters>
+      <parameter name="resources" value="searchDoctor.bdd"/>
+    </parameters>
+  </test>
+</suite>
