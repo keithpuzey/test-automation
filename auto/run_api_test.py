@@ -111,9 +111,11 @@ def generate_junit_xml(test_name, final_result, test_run_url, duration_seconds):
         time=f"{duration_seconds:.3f}"
     )
 
-    # Add a <properties> element with a custom property
+    # Add properties: Summary, and Log
     properties = ET.SubElement(testcase, "properties")
-    ET.SubElement(properties, "property", name="Device", value=test_run_url)
+
+    ET.SubElement(properties, "property", name="Summary", value=test_run_url)
+    ET.SubElement(properties, "property", name="Log", value=test_run_url)
 
     if final_result != "pass":
         ET.SubElement(testcase, "failure", message=f"API Monitoring test result: {final_result}")
