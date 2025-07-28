@@ -2,7 +2,7 @@
 @SearchDoctors
 Feature: TC43 - Find a Doctor
 
-  Scenario Outline: Search doctor name from CSV
+  Scenario Outline: Search doctor name 
    Given I navigate to the TopDoctors site
     When I search for "<doctorName>"
     Then I wait between searches

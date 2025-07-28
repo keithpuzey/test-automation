@@ -32,13 +32,6 @@ public class SearchDoctorSteps {
     QAFWebElement placeholder = (QAFWebElement) driver.findElement(placeholderLocator);
     placeholder.click();
 
-    // Wait for real input field to appear
-    By realInputLocator = By.xpath("//input[@type='text' and @placeholder]");
-    wait.until(ExpectedConditions.visibilityOfElementLocated(realInputLocator));
-    QAFWebElement searchInput = (QAFWebElement) driver.findElement(realInputLocator);
-        searchInput.clear();
-        searchInput.sendKeys(doctorName);
-        searchInput.sendKeys(Keys.ENTER);
     }
 
     @QAFTestStep(description = "I wait between searches")
