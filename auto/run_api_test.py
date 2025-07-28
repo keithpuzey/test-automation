@@ -114,11 +114,13 @@ def generate_junit_xml(test_name, final_result, test_run_url, duration_seconds):
     if final_result != "pass":
         ET.SubElement(testcase, "failure", message=f"API Monitoring test result: {final_result}")
 
-    ET.SubElement(testcase, "system-out").text = f"Test Report URL: {test_run_url}"
+    # Add CDATA-wrapped test report URL
+    ET.SubElement(testcase, "system-out").text = f"<![CDATA[Test Report URL: {test_run_url}]]>"
 
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
+    
 
 
 def main():
