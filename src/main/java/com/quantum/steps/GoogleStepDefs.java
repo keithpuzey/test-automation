@@ -54,7 +54,7 @@ public class GoogleStepDefs {
 		new WebDriverTestBase().getDriver().get("https://www.google.com/");
 	}
 
-	@When("^I search for \"([^\"]*)\"$")
+	@When("^I search Google for \"([^\"]*)\"$")
 	public void search(String searchKey) {
     WebDriver driver = new WebDriverTestBase().getDriver();
     WebElement searchBox = driver.findElement(By.name("q"));
