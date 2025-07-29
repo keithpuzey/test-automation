@@ -98,6 +98,11 @@ def generate_junit_xml(test_name, result, report_url, reason=None, duration_seco
         time=f"{duration_seconds:.3f}"
     )
 
+    # ✅ Add properties for Helix ALM field codes
+    properties = ET.SubElement(testcase, "properties")
+    ET.SubElement(properties, "property", name="%ATR_REPORT_URL%", value=report_url)
+    ET.SubElement(properties, "property", name="%ATR_HTTPURL%", value=report_url)
+
     if result != "passed":
         failure_message = f"Test failed. Reason: {reason}" if reason else "Test failed."
         ET.SubElement(testcase, "failure", message=failure_message)
