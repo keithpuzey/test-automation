@@ -107,7 +107,7 @@ def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, dur
         failure_message = f"Test failed. Reason: {reason}" if reason else "Test failed."
         ET.SubElement(testcase, "failure", message=failure_message)
 
-    ET.SubElement(testcase, "system-out").text = f"Full Report: {report_url}"
+    ET.SubElement(testcase, "system-out").text = f"Full Report: {test_grid_report_url}"
 
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
