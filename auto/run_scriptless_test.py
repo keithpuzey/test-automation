@@ -76,7 +76,7 @@ def check_test_status(execution_id):
         return None, None, None, None, None
 
 # Create a JUnit XML result file with duration
-def generate_junit_xml(test_name, result, report_url, reason=None, duration_seconds=0.0):
+def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
 
@@ -100,8 +100,8 @@ def generate_junit_xml(test_name, result, report_url, reason=None, duration_seco
 
     # ✅ Add properties for Helix ALM field codes
     properties = ET.SubElement(testcase, "properties")
-    ET.SubElement(properties, "property", name="%ATR_REPORT_URL%", value=report_url)
-    ET.SubElement(properties, "property", name="%ATR_HTTPURL%", value=report_url)
+    ET.SubElement(properties, "property", name="%ATR_REPORT_URL%", value=test_grid_report_url)
+    ET.SubElement(properties, "property", name="%ATR_HTTPURL%", value=test_grid_report_url)
 
     if result != "passed":
         failure_message = f"Test failed. Reason: {reason}" if reason else "Test failed."
@@ -112,6 +112,7 @@ def generate_junit_xml(test_name, result, report_url, reason=None, duration_seco
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
+
 
 # Main function
 def main():
