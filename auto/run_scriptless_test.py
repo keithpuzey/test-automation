@@ -100,14 +100,14 @@ def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, dur
 
     # ✅ Add properties for Helix ALM field codes
     properties = ET.SubElement(testcase, "properties")
-    ET.SubElement(properties, "property", name="%ATR_REPORT_URL%", value=test_grid_report_url)
-    ET.SubElement(properties, "property", name="%ATR_HTTPURL%", value=test_grid_report_url)
+    ET.SubElement(properties, "property", name="%ATR_REPORT_URL%", value=test_grid_report_url or "")
+    ET.SubElement(properties, "property", name="%ATR_HTTPURL%", value=test_grid_report_url or "")
 
     if result != "passed":
         failure_message = f"Test failed. Reason: {reason}" if reason else "Test failed."
         ET.SubElement(testcase, "failure", message=failure_message)
 
-    ET.SubElement(testcase, "system-out").text = f"Full Report: {test_grid_report_url}"
+    ET.SubElement(testcase, "system-out").text = f"Full Report: {test_grid_report_url or 'Not available'}"
 
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
