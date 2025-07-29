@@ -39,22 +39,29 @@ def start_test():
     url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public&param.PERFECTOTESTURL={PERFECTOTESTURL}&param.symptom={symptom}'
     headers = {'Content-Type': 'application/json'}
 
+    print(f"📡 Sending request to start test: {url}")
     response = requests.post(url, headers=headers)
+
     if response.status_code == 200:
         try:
             response_json = response.json()
+            print("✅ Test initiation response:")
+            print(response_json)  # Print the full parsed response
+
             execution_id = response_json.get('executionId')
             report_key = response_json.get('reportKey')
             test_grid_report_url = response_json.get('testGridReportUrl')
             single_test_report_url = response_json.get('singleTestReportUrl')
-            print("Single Test Report:", single_test_report_url)
+            print("📄 Single Test Report URL:", single_test_report_url)
             return execution_id, report_key, test_grid_report_url, single_test_report_url
-        except KeyError:
-            print("❌ Error parsing response:")
+        except ValueError:
+            print("❌ Could not parse JSON response:")
             print(response.content)
             return None, None, None, None
     else:
-        print("❌ Error starting test:", response.text)
+        print("❌ Error starting test:")
+        print(f"Status Code: {response.status_code}")
+        print(response.text)
         return None, None, None, None
 
 # Poll until the test completes
