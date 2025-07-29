@@ -109,6 +109,7 @@ def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, dur
     properties = ET.SubElement(testcase, "properties")
     ET.SubElement(properties, "property", name="%ATR_REPORT_URL%", value=test_grid_report_url or "")
     ET.SubElement(properties, "property", name="%ATR_HTTPURL%", value=test_grid_report_url or "")
+    ET.SubElement(properties, "property", name="%Z_TEST_URL%", value=test_grid_report_url or "")
 
     if result != "passed":
         failure_message = f"Test failed. Reason: {reason}" if reason else "Test failed."
