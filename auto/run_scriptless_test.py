@@ -137,7 +137,7 @@ def main():
         if status is None:
             print("❌ Could not get test status.")
             duration = time.time() - start_time
-            generate_junit_xml(TEST_NAME, "failed", single_test_report_url, reason="Could not fetch status", duration_seconds=duration)
+            generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, reason="Could not fetch status", duration_seconds=duration)
             exit(1)
 
         print("Current status:", status)
@@ -152,14 +152,14 @@ def main():
                 print("Reason:", reason)
                 print("Devices:", devices)
                 print("Report:", single_test_report_url)
-                generate_junit_xml(TEST_NAME, "failed", single_test_report_url, reason, duration_seconds=duration)
+                generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, reason, duration_seconds=duration)
                 exit(1)
             else:
                 print("Test passed.")
                 print("Reason:", reason)
                 print("Devices:", devices)
                 print("Report:", single_test_report_url)
-                generate_junit_xml(TEST_NAME, "passed", single_test_report_url, duration_seconds=duration)
+                generate_junit_xml(TEST_NAME, "passed", test_grid_report_url, duration_seconds=duration)
                 exit(0)
 
         time.sleep(10)
