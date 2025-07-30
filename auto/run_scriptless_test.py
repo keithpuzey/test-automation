@@ -86,8 +86,6 @@ def check_test_status(execution_id):
 
 # Get device details from Perfecto
 
-
-# Get device details
 def get_device_details(device_id):
     url = f'https://{perfecto_cloud}/api/v1/device-management/devices/{device_id}'
     headers = { 'Perfecto-Authorization': PerfectoKey }
@@ -122,7 +120,7 @@ def get_device_details(device_id):
 def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
-
+    print( "Device ID = ", device_id)
     device_info = get_device_details(device_id) if device_id else {}
     device_tested = f"{device_info.get('manufacturer', '')} {device_info.get('model', '')}".strip()
 
