@@ -117,7 +117,8 @@ def generate_junit_xml(test_name, final_result, test_run_url, duration_seconds):
         ET.SubElement(testcase, "failure", message=f"API Monitoring test result: {final_result}")
 
     # Optional: include system-out with the URL for visibility
-    ET.SubElement(testcase, "system-out").text = f"<![CDATA[Test Report URL: {test_run_url}]]>"
+    ET.SubElement(testcase, "system-out").text = f"Test Report URL: {test_run_url}"
+
 
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
