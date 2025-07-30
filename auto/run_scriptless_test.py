@@ -82,15 +82,21 @@ def check_test_status(execution_id):
         return None, None, None, None, None
 
 # Get device details from Perfecto
+
 def get_device_details(device_id):
-    url = f'https://{perfecto_cloud}/services/devices/{device_id}?securityToken={PerfectoKey}'
+    url = f'https://{perfecto_cloud}/api/v1/device-management/devices/{device_id}'
+    headers = {
+        'Perfecto-Authorization': PerfectoKey
+    }
     try:
-        response = requests.get(url)
+        response = requests.get(url, headers=headers)
         response.raise_for_status()
-        return response.json()
+        data = response.json()
+        return data.get("handset", {})
     except requests.exceptions.RequestException as e:
         print(f"❌ Failed to fetch device details for {device_id}: {e}")
         return {}
+
 
 # Generate JUnit XML result
 def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reason=None, duration_seconds=0.0):
@@ -109,17 +115,19 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reaso
         time=f"{duration_seconds:.3f}"
     )
 
+    device_tested = f"{device_info.get('manufacturer', '')} {device_info.get('model', '')}".strip()
+
     testcase_attrs = {
         "classname": "PerfectoTest",
         "name": test_name,
         "time": f"{duration_seconds:.3f}",
         "Perfecto_Test_URL": test_grid_report_url or "",
-        "Device_Tested": device_id or "",
+        "Device_Tested": device_tested,
         "OS": device_info.get("os", ""),
         "OS_Version": device_info.get("osVersion", ""),
         "Resolution": device_info.get("resolution", ""),
         "Location": device_info.get("location", ""),
-        "Network": device_info.get("network", "")
+        "Network": device_info.get("operator", {}).get("name", "")
     }
 
     testcase = ET.SubElement(testsuite, "testcase", attrib=testcase_attrs)
@@ -133,7 +141,7 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reaso
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
-
+    
 # Main test execution flow
 def main():
     start_time = time.time()
