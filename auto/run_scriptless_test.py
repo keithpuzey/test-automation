@@ -179,7 +179,7 @@ def main():
             duration = time.time() - start_time
 
             # DEBUG: Print full devices list
-            print("📦 Devices response:", json.dumps(devices, indent=2), flush=True)
+            # print("📦 Devices response:", json.dumps(devices, indent=2), flush=True)
 
             # Extract device ID only if present
             device_id = None
