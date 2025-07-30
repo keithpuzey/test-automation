@@ -36,7 +36,7 @@ public class SearchDoctorSteps {
 
         // Log clickable Perfecto report URL for this step
         String reportUrlForStep = getReportUrlForStep("searchDoctor");
-        Reporter.log("Perfecto Step Report URL: " + reportUrlForStep, true);
+        Reporter.log("Perfecto Step Report URL: " + reportUrlForStep, MessageTypes.Info);
     }
 
     @QAFTestStep(description = "I wait between searches")
@@ -49,7 +49,7 @@ public class SearchDoctorSteps {
 
         // Log clickable Perfecto report URL for this step
         String reportUrlForStep = getReportUrlForStep("waitBetweenSearches");
-        Reporter.log("Perfecto Step Report URL: " + reportUrlForStep, true);
+        Reporter.log("Perfecto Step Report URL: " + reportUrlForStep, MessageTypes.Info);
     }
 
     /**
