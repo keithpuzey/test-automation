@@ -3,19 +3,18 @@ import time
 import os
 import xml.etree.ElementTree as ET
 
-
+# Load environment variables
 PerfectoKey = os.getenv("PerfectoToken")
 if not PerfectoKey:
     raise RuntimeError("❌ Environment variable 'PerfectoToken' is not set.")
 
-Perfectotest = os.getenv("PerfectoTest")
+Perfectotest = os.getenv("Perfectotest")
 if not Perfectotest:
     raise RuntimeError("❌ Environment variable 'Perfectotest' is not set.")
 
-Perfectotestname = os.getenv("PerfectoTestname")
+Perfectotestname = os.getenv("Perfectotestname")
 if not Perfectotestname:
     raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
-
 
 PERFECTOTESTURL = os.getenv("PERFECTOTESTURL")
 if not PERFECTOTESTURL:
@@ -24,8 +23,6 @@ if not PERFECTOTESTURL:
 symptom = os.getenv("symptom")
 if not symptom:
     raise RuntimeError("❌ Environment variable 'symptom' is not set.")
-
-
 
 # Config
 perfecto_cloud = 'web-demo-fra.perfectomobile.com'
@@ -36,9 +33,12 @@ TEST_NAME = Perfectotestname
 
 # Start the Perfecto script execution
 def start_test():
-    url = f'https://{perfecto_cloud}/services/executions?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}&output.visibility=public&param.PERFECTOTESTURL={PERFECTOTESTURL}&param.symptom={symptom}'
+    url = (
+        f'https://{perfecto_cloud}/services/executions'
+        f'?operation=execute&scriptKey={script_key}&securityToken={PerfectoKey}'
+        f'&output.visibility=public&param.PERFECTOTESTURL={PERFECTOTESTURL}&param.symptom={symptom}'
+    )
     headers = {'Content-Type': 'application/json'}
-
     print(f"📡 Sending request to start test: {url}")
     response = requests.post(url, headers=headers)
 
@@ -46,14 +46,13 @@ def start_test():
         try:
             response_json = response.json()
             print("✅ Test initiation response:")
-            print(response_json)  # Print the full parsed response
-
-            execution_id = response_json.get('executionId')
-            report_key = response_json.get('reportKey')
-            test_grid_report_url = response_json.get('testGridReportUrl')
-            single_test_report_url = response_json.get('singleTestReportUrl')
-            print("📄 Single Test Report URL:", single_test_report_url)
-            return execution_id, report_key, test_grid_report_url, single_test_report_url
+            print(response_json)
+            return (
+                response_json.get('executionId'),
+                response_json.get('reportKey'),
+                response_json.get('testGridReportUrl'),
+                response_json.get('singleTestReportUrl')
+            )
         except ValueError:
             print("❌ Could not parse JSON response:")
             print(response.content)
@@ -64,7 +63,7 @@ def start_test():
         print(response.text)
         return None, None, None, None
 
-# Poll until the test completes
+# Poll test status
 def check_test_status(execution_id):
     url = f'https://{perfecto_cloud}/services/executions/{execution_id}?operation=status&securityToken={PerfectoKey}'
     try:
@@ -82,10 +81,23 @@ def check_test_status(execution_id):
         print("❌ Error checking test status:", e)
         return None, None, None, None, None
 
-# Create a JUnit XML result file with duration
-def generate_junit_xml(test_name, result, test_grid_report_url, devices, reason=None, duration_seconds=0.0):
+# Get device details from Perfecto
+def get_device_details(device_id):
+    url = f'https://{perfecto_cloud}/services/devices/{device_id}?securityToken={PerfectoKey}'
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Failed to fetch device details for {device_id}: {e}")
+        return {}
+
+# Generate JUnit XML result
+def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
+
+    device_info = get_device_details(device_id) if device_id else {}
 
     testsuite = ET.Element(
         "testsuite",
@@ -97,14 +109,17 @@ def generate_junit_xml(test_name, result, test_grid_report_url, devices, reason=
         time=f"{duration_seconds:.3f}"
     )
 
-    # ⬇️ Add custom attributes directly to the testcase element
     testcase_attrs = {
         "classname": "PerfectoTest",
-        "name": f"{test_name}",
+        "name": test_name,
         "time": f"{duration_seconds:.3f}",
-        "Perfecto_Test_URL": test_grid_report_url or "",           # ✅ Custom test URL attribute
-        "Device_Tested": devices or "",                            # ✅ Custom Devices attribute
-
+        "Perfecto_Test_URL": test_grid_report_url or "",
+        "Device_Tested": device_id or "",
+        "OS": device_info.get("os", ""),
+        "OS_Version": device_info.get("osVersion", ""),
+        "Resolution": device_info.get("resolution", ""),
+        "Location": device_info.get("location", ""),
+        "Network": device_info.get("network", "")
     }
 
     testcase = ET.SubElement(testsuite, "testcase", attrib=testcase_attrs)
@@ -119,13 +134,13 @@ def generate_junit_xml(test_name, result, test_grid_report_url, devices, reason=
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
 
-# Main function
+# Main test execution flow
 def main():
     start_time = time.time()
     execution_id, report_key, test_grid_report_url, single_test_report_url = start_test()
     if execution_id is None:
         print("❌ Failed to start test.")
-        generate_junit_xml(TEST_NAME, "failed", "N/A", reason="Failed to start test.", duration_seconds=0.0)
+        generate_junit_xml(TEST_NAME, "failed", "N/A", None, reason="Failed to start test.", duration_seconds=0.0)
         exit(1)
 
     print("🕒 Test execution started with ID:", execution_id)
@@ -135,7 +150,7 @@ def main():
         if status is None:
             print("❌ Could not get test status.")
             duration = time.time() - start_time
-            generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, reason="Could not fetch status", duration_seconds=duration)
+            generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, None, reason="Could not fetch status", duration_seconds=duration)
             exit(1)
 
         print("Current status:", status)
@@ -145,19 +160,15 @@ def main():
             duration = time.time() - start_time
             print("✅ Test execution completed.")
 
+            device_id = devices[0].get('deviceId') if devices else None
+
             if flow_end_code == 'Failed':
-                print("Test failed.")
-                print("Reason:", reason)
-                print("Devices:", devices)
-                print("Report:", test_grid_report_url)
-                generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, devices, reason, duration_seconds=duration)
+                print("❌ Test failed.")
+                generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, device_id, reason, duration_seconds=duration)
                 exit(1)
             else:
-                print("Test passed.")
-                print("Reason:", reason)
-                print("Devices:", devices)
-                print("Report:", test_grid_report_url)
-                generate_junit_xml(TEST_NAME, "passed", test_grid_report_url, devices, duration_seconds=duration)
+                print("✅ Test passed.")
+                generate_junit_xml(TEST_NAME, "passed", test_grid_report_url, device_id, reason, duration_seconds=duration)
                 exit(0)
 
         time.sleep(10)
