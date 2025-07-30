@@ -135,7 +135,10 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reaso
         "OS_Version": device_info.get("osVersion", ""),
         "Resolution": device_info.get("resolution", ""),
         "Location": device_info.get("location", ""),
-        "Network": device_info.get("operator", {}).get("name", "")
+        "Network": device_info.get("operator", {}).get("name", ""),
+        "Manufacturer": device_info.get("manufacturer", ""),
+        "Model": device_info.get("model", ""),
+        "Device_ID": device_info.get("deviceId", "")
     }
 
     testsuite = ET.Element("testsuite", name="Perfecto Test Suite", tests="1", failures="0" if result == "passed" else "1", errors="0", skipped="0", time=f"{duration_seconds:.3f}")
