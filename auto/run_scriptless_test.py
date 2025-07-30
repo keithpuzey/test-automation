@@ -117,11 +117,11 @@ def get_device_details(device_id):
         return {}
 
 # Generate JUnit XML result
-def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reason=None, duration_seconds=0.0):
+def generate_junit_xml(test_name, result, test_grid_report_url, devices, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
-    print( "Device ID = ", device_id)
-    device_info = get_device_details(device_id) if device_id else {}
+    print( "Device ID = ", devices)
+    device_info = get_device_details(devices) if devices else {}
     device_tested = f"{device_info.get('manufacturer', '')} {device_info.get('model', '')}".strip()
 
     testcase_attrs = {
@@ -129,7 +129,7 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reaso
         "name": test_name,
         "time": f"{duration_seconds:.3f}",
         "Perfecto_Test_URL": test_grid_report_url or "",
-        "Device_Tested": device_tested,
+        "Device_Tested": devices,
         "OS": device_info.get("os", ""),
         "OS_Version": device_info.get("osVersion", ""),
         "Resolution": device_info.get("resolution", ""),
