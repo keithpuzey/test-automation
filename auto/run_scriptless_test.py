@@ -2,6 +2,7 @@ import requests
 import time
 import os
 import xml.etree.ElementTree as ET
+import json
 
 # Load environment variables
 PerfectoKey = os.getenv("PerfectoToken")
@@ -92,12 +93,32 @@ def get_device_details(device_id):
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         data = response.json()
-        return data.get("handset", {})
+
+        handset = data.get("handset", {})
+
+        # Debug: Print full JSON response
+        print("✅ Raw JSON response from Perfecto device API:")
+        print(json.dumps(data, indent=2))
+
+        # Debug: Print specific values being extracted
+        debug_info = {
+            "Device_Tested": f"{handset.get('manufacturer', '')} {handset.get('model', '')}".strip(),
+            "OS": handset.get("os", ""),
+            "OS_Version": handset.get("osVersion", ""),
+            "Resolution": handset.get("resolution", ""),
+            "Location": handset.get("location", ""),
+            "Network": handset.get("operator", {}).get("name", "")
+        }
+
+        print("\n🔍 Extracted fields for XML generation:")
+        for key, value in debug_info.items():
+            print(f"{key}: {value}")
+
+        return handset
+
     except requests.exceptions.RequestException as e:
         print(f"❌ Failed to fetch device details for {device_id}: {e}")
         return {}
-
-
 # Generate JUnit XML result
 def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
@@ -141,7 +162,7 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reaso
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
-    
+
 # Main test execution flow
 def main():
     start_time = time.time()
