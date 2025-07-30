@@ -8,11 +8,11 @@ PerfectoKey = os.getenv("PerfectoToken")
 if not PerfectoKey:
     raise RuntimeError("❌ Environment variable 'PerfectoToken' is not set.")
 
-Perfectotest = os.getenv("Perfectotest")
+Perfectotest = os.getenv("PerfectoTest")
 if not Perfectotest:
     raise RuntimeError("❌ Environment variable 'Perfectotest' is not set.")
 
-Perfectotestname = os.getenv("Perfectotestname")
+Perfectotestname = os.getenv("PerfectoTestname")
 if not Perfectotestname:
     raise RuntimeError("❌ Environment variable 'Perfectotestname' is not set.")
 
