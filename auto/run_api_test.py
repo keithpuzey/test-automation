@@ -103,32 +103,25 @@ def generate_junit_xml(test_name, final_result, test_run_url, duration_seconds):
         time=f"{duration_seconds:.3f}"
     )
 
+    # ✅ Add test_run_url as a custom attribute directly on the testcase
     testcase = ET.SubElement(
         testsuite,
         "testcase",
         classname="Runscope",
         name=test_name,
-        time=f"{duration_seconds:.3f}"
+        time=f"{duration_seconds:.3f}",
+        BlazeMeter_API_Test_URL=test_run_url or ""  # Replace with your preferred attribute name
     )
-
-    # Add properties: URL's
-    properties = ET.SubElement(testcase, "properties")
-
-    ET.SubElement(properties, "property", name="%ATR_REPORT_URL%", value=test_run_url)
-    ET.SubElement(properties, "property", name="%ATR_HTTPURL%", value=test_run_url)
-    ET.SubElement(properties, "property", name="%Z_TEST_URL%", value=test_run_url or "")
-
 
     if final_result != "pass":
         ET.SubElement(testcase, "failure", message=f"API Monitoring test result: {final_result}")
 
-    # Optional: still include system-out with the URL as text for visibility
+    # Optional: include system-out with the URL for visibility
     ET.SubElement(testcase, "system-out").text = f"<![CDATA[Test Report URL: {test_run_url}]]>"
 
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
-
 
 def main():
     start_time = time.time()

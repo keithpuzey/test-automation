@@ -102,9 +102,8 @@ def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, dur
         "classname": "PerfectoTest",
         "name": f"{test_name}",
         "time": f"{duration_seconds:.3f}",
-        "Z_TEST_URL": test_grid_report_url or "",           # ✅ Custom test URL attribute
-        "ATR_REPORT_URL": test_grid_report_url or "",       # Optional: also here
-        "ATR_HTTPURL": test_grid_report_url or ""           # Optional: also here
+        "Perfecto_Test_URL": test_grid_report_url or "",           # ✅ Custom test URL attribute
+
     }
 
     testcase = ET.SubElement(testsuite, "testcase", attrib=testcase_attrs)
