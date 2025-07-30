@@ -180,7 +180,7 @@ def main():
             # Extract device ID only if present
             device_id = None
             if devices and isinstance(devices, list) and isinstance(devices[0], dict):
-                device_id = devices[0].get('deviceId')
+                device_id = devices[0].get('id')
 
             if not device_id:
                 print("⚠️ No device ID found — skipping device details fetch", flush=True)
