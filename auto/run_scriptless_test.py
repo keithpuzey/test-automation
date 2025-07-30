@@ -97,19 +97,17 @@ def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, dur
         time=f"{duration_seconds:.3f}"
     )
 
-    testcase = ET.SubElement(
-        testsuite,
-        "testcase",
-        classname="PerfectoTest",
-        name=f"{test_name}",
-        time=f"{duration_seconds:.3f}"
-    )
+    # ⬇️ Add custom attributes directly to the testcase element
+    testcase_attrs = {
+        "classname": "PerfectoTest",
+        "name": f"{test_name}",
+        "time": f"{duration_seconds:.3f}",
+        "Z_TEST_URL": test_grid_report_url or "",           # ✅ Custom test URL attribute
+        "ATR_REPORT_URL": test_grid_report_url or "",       # Optional: also here
+        "ATR_HTTPURL": test_grid_report_url or ""           # Optional: also here
+    }
 
-    # ✅ Add properties for Helix ALM field codes
-    properties = ET.SubElement(testcase, "properties")
-    ET.SubElement(properties, "property", name="%ATR_REPORT_URL%", value=test_grid_report_url or "")
-    ET.SubElement(properties, "property", name="%ATR_HTTPURL%", value=test_grid_report_url or "")
-    ET.SubElement(properties, "property", name="%Z_TEST_URL%", value=test_grid_report_url or "")
+    testcase = ET.SubElement(testsuite, "testcase", attrib=testcase_attrs)
 
     if result != "passed":
         failure_message = f"Test failed. Reason: {reason}" if reason else "Test failed."
@@ -120,7 +118,6 @@ def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, dur
     tree = ET.ElementTree(testsuite)
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}")
-
 
 # Main function
 def main():
