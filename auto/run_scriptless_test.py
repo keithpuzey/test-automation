@@ -96,8 +96,8 @@ def get_device_details(device_id):
         data = response.json()
         handset = data.get("handset", {})
 
-        print("✅ Raw JSON response from Perfecto device API:", flush=True)
-        print(json.dumps(data, indent=2), flush=True)
+        # print("✅ Raw JSON response from Perfecto device API:", flush=True)
+        # print(json.dumps(data, indent=2), flush=True)
 
         debug_info = {
             "Device_Tested": f"{handset.get('manufacturer', '')} {handset.get('model', '')}".strip(),
@@ -121,7 +121,7 @@ def get_device_details(device_id):
 def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
-    print( "Device ID = ", device_id)
+
     device_info = get_device_details(device_id) if device_id else {}
     device_tested = f"{device_info.get('manufacturer', '')} {device_info.get('model', '')}".strip()
 
