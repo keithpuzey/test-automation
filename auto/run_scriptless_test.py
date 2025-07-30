@@ -103,6 +103,7 @@ def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, dur
         "name": f"{test_name}",
         "time": f"{duration_seconds:.3f}",
         "Perfecto_Test_URL": test_grid_report_url or "",           # ✅ Custom test URL attribute
+        "Device_Tested": devices or "",
 
     }
 
@@ -148,14 +149,14 @@ def main():
                 print("Test failed.")
                 print("Reason:", reason)
                 print("Devices:", devices)
-                print("Report:", single_test_report_url)
+                print("Report:", test_grid_report_url)
                 generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, reason, duration_seconds=duration)
                 exit(1)
             else:
                 print("Test passed.")
                 print("Reason:", reason)
                 print("Devices:", devices)
-                print("Report:", single_test_report_url)
+                print("Report:", test_grid_report_url)
                 generate_junit_xml(TEST_NAME, "passed", test_grid_report_url, duration_seconds=duration)
                 exit(0)
 
