@@ -83,7 +83,7 @@ def check_test_status(execution_id):
         return None, None, None, None, None
 
 # Create a JUnit XML result file with duration
-def generate_junit_xml(test_name, result, test_grid_report_url, reason=None, duration_seconds=0.0):
+def generate_junit_xml(test_name, result, test_grid_report_url, devices, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
 
