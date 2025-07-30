@@ -5,8 +5,6 @@ import xml.etree.ElementTree as ET
 import json
 import sys
 
-# Ensure immediate output flushing for Jenkins
-sys.stdout.reconfigure(line_buffering=True)
 
 # Load environment variables
 PerfectoKey = os.getenv("PerfectoToken")
