@@ -29,6 +29,7 @@ if not symptom:
 
 # Config
 perfecto_cloud = 'web-demo-fra.perfectomobile.com'
+perfecto_cloud_app = 'web-demo-fra.app.perfectomobile.com'
 script_key = Perfectotest
 RESULT_DIR = "test-results"
 RESULT_FILE = os.path.join(RESULT_DIR, "perfecto-result.xml")
@@ -87,7 +88,7 @@ def check_test_status(execution_id):
 # Get device details from Perfecto
 
 def get_device_details(device_id):
-    url = f'https://{perfecto_cloud}/api/v1/device-management/devices/{device_id}'
+    url = f'https://{perfecto_cloud_app}/api/v1/device-management/devices/{device_id}'
     headers = { 'Perfecto-Authorization': PerfectoKey }
     try:
         response = requests.get(url, headers=headers)
