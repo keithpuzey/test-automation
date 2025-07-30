@@ -11,6 +11,7 @@ import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.ui.WebDriverTestBase;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebDriver;
 import com.qmetry.qaf.automation.util.Reporter;
+import com.qmetry.qaf.automation.core.MessageTypes;
 
 public class SearchDoctorSteps {
 
@@ -20,7 +21,7 @@ public class SearchDoctorSteps {
 
         // Log clickable Perfecto report URL for this step
         String reportUrlForStep = getReportUrlForStep("goToTopDoctors");
-        Reporter.log("Perfecto Step Report URL: " + reportUrlForStep, true);
+        Reporter.log("Perfecto Step Report URL: " + reportUrlForStep, MessageTypes.Info);
     }
 
     @QAFTestStep(description = "I search for {0}")
