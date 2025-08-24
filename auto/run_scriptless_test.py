@@ -28,7 +28,7 @@ if not symptom:
     raise RuntimeError("❌ Environment variable 'symptom' is not set.")
 
 # Config
-perfecto_cloud = 'demi.perfectomobile.com'
+perfecto_cloud = 'demo.perfectomobile.com'
 perfecto_cloud_app = 'demo.app.perfectomobile.com'
 script_key = Perfectotest
 RESULT_DIR = "test-results"
