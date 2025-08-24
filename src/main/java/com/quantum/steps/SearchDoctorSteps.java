@@ -17,11 +17,8 @@ public class SearchDoctorSteps {
 
     @QAFTestStep(description = "I navigate to the TopDoctors site")
     public void goToTopDoctors() {
-        new WebDriverTestBase().getDriver().get("https://www.topdoctors.co.uk/doctor/");
-
-        // Log clickable Perfecto report URL for this step
-        String reportUrlForStep = getReportUrlForStep("goToTopDoctors");
-        Reporter.log("Perfecto Step Report URL: " + reportUrlForStep, MessageTypes.Info);
+       
+        driver.executeScript("perfecto:ai:user-action", Map.of("action", "Open new order screen!"));
     }
 
     @QAFTestStep(description = "I search for {0}")
