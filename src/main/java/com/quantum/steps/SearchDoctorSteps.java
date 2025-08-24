@@ -17,18 +17,25 @@ public class SearchDoctorSteps {
 
     @QAFTestStep(description = "I navigate to the TopDoctors site")
     public void goToTopDoctors() {
-       
-        driver.executeScript("perfecto:ai:user-action", Map.of("action", "Open new order screen!"));
+           QAFWebDriver driver = new WebDriverTestBase().getDriver();
+
+        driver.executeScript("perfecto:ai:user-action",
+                Map.of("action", "Open new order screen!"));
     }
+
 
     @QAFTestStep(description = "I search for {0}")
     public void searchDoctor(String doctorName) {
-     driver.executeScript("perfecto:ai:user-action", Map.of("action", "Open new order screen!"));
+           QAFWebDriver driver = new WebDriverTestBase().getDriver();
+        
+        driver.executeScript("perfecto:ai:user-action", Map.of("action", "Open new order screen!"));
     }
 
     @QAFTestStep(description = "I wait between searches")
     public void waitBetweenSearches() {
-       driver.executeScript("perfecto:ai:user-action", Map.of("action", "Open new order screen!"));
+  
+               QAFWebDriver driver = new WebDriverTestBase().getDriver();    
+        driver.executeScript("perfecto:ai:user-action", Map.of("action", "Open new order screen!"));
      }
 
     /**
