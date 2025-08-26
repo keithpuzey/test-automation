@@ -2,7 +2,7 @@
 <suite name="Quantum Test Suite">
     <test name="Salesforce AI Test">
         <packages>
-            <package name="com.quantum.tests"/>
+            <package name="com.quantum.tests" />
         </packages>
     </test>
 </suite>
