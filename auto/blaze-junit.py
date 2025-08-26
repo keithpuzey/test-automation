@@ -2,6 +2,7 @@ import re
 import json
 import sys
 import xml.etree.ElementTree as ET
+import html  # for escaping special chars
 
 
 def parse_jenkins_log(log_path, junit_out):
@@ -38,6 +39,8 @@ def parse_jenkins_log(log_path, junit_out):
     if m:
         status = "FAILED"
         failure_message = m.group(1).strip()
+        # Escape XML special chars
+        failure_message = html.escape(failure_message)
 
     # Extract Jenkins build result
     m = re.search(r"Build step .* changed build result to (\w+)", log)
@@ -63,36 +66,29 @@ def parse_jenkins_log(log_path, junit_out):
     # Add failure if exists
     if failure_message:
         ET.SubElement(testcase, "failure", {
-            "message": "Test failed. Reason: " + failure_message
+            "message": f"Test failed. Reason: {failure_message}"
         })
 
     # Add <properties> with report + metrics + build status
     props = ET.SubElement(testcase, "properties")
-
-    ET.SubElement(props, "property", {
-        "name": "Blazemeter_Report_URL",
-        "value": public_report
-    })
-
-    ET.SubElement(props, "property", {
-        "name": "Jenkins_Build_Status",
-        "value": build_status
-    })
+    ET.SubElement(props, "property", {"name": "Blazemeter_Report_URL", "value": public_report})
+    ET.SubElement(props, "property", {"name": "Jenkins_Build_Status", "value": build_status})
 
     for key, value in agg_report.items():
-        ET.SubElement(props, "property", {
-            "name": key,
-            "value": str(value)
-        })
+        ET.SubElement(props, "property", {"name": key, "value": str(value)})
 
     # Add system-out (for reference)
     sysout = ET.SubElement(testcase, "system-out")
-    sysout.text = f"Full Report: {public_report}\nAggregate Report: {json.dumps(agg_report)}\nBuild Status: {build_status}"
+    sysout.text = (
+        f"Full Report: {public_report}\n"
+        f"Aggregate Report: {json.dumps(agg_report)}\n"
+        f"Build Status: {build_status}"
+    )
 
-    # Pretty print XML
+    # Write XML (Python <3.9 compatible)
     tree = ET.ElementTree(testsuite)
     tree.write(junit_out, encoding="utf-8", xml_declaration=True)
-    print(f"JUnit report written to {junit_out}")
+    print(f"✅ JUnit report written to {junit_out}")
 
 
 if __name__ == "__main__":

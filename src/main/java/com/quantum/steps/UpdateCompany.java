@@ -20,8 +20,8 @@ public class UpdateCompany {
            QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
         driver.executeScript("perfecto:ai:user-action",
-            Map.of("action", "go to url https://perforce-dev-ed.develop.my.salesforce.com/"));
-        	Map.of("action", "login as the users salesexec@perforce.com with the password P4Demo123/");	
+            Map.of("action", "go to url https://perforce-dev-ed.develop.my.salesforce.com/ and login as the users salesexec@perforce.com with the password P4Demo123"));
+	
     }
 
 

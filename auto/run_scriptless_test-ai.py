@@ -28,9 +28,9 @@ TEST_NAME = Perfectotestname
 
 # --- Start Test ---
 def start_test():
-    url = f"https://{perfecto_cloud}/sciptless/api/executions"
+    url = f"https://{perfecto_cloud}/scriptless/api/executions"
     payload = {
-        "testKey": perfectotest
+        "testKey": Perfectotest
     }
     headers = {'Content-Type': 'application/json',"Perfecto-Authorization": PerfectoKey
     }

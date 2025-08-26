@@ -31,7 +31,6 @@ else:
     AUTH_TOKEN = api_token
 
 # Configurable values
-# Configurable values
 RUNSCOPE_TRIGGER_URL = f"https://api.runscope.com/radar/{api_test}/trigger?runscope_environment={api_environment}"
 
 RESULT_DIR = "test-results"
@@ -44,7 +43,7 @@ HEADERS = {
 
 def trigger_test():
     print("🔄 Triggering API Monitoring test...")
-    response = requests.post(RUNSCOPE_TRIGGER_URL)
+    response = requests.post(RUNSCOPE_TRIGGER_URL, headers= HEADERS)
     response.raise_for_status()
     data = response.json()
 
