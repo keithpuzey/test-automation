@@ -17,9 +17,20 @@ import com.qmetry.qaf.automation.core.MessageTypes;
 public class UpdateCompany {
 
    
-    private QAFWebDriver getDriver() {
-        return new WebDriverTestBase().getDriver(); // Uses driver.properties configuration
-    }   
+
+private QAFWebDriver getDriver() {
+    Map<String, Object> capabilities = new HashMap<>();
+    
+    // Specify your exact device ID from Perfecto
+    capabilities.put("deviceId", "R52T1059MTT");  
+   // capabilities.put("platformName", "iOS");
+   // capabilities.put("platformVersion", "16");
+   // capabilities.put("applicationName", "<your-app-name-if-testing-app>");
+   // capabilities.put("autoLaunchApp", true);
+
+    // Returns a driver using these capabilities instead of the default driver.properties
+    return new WebDriverTestBase().getDriver(capabilities);
+} 
 	
 	
     @QAFTestStep(description = "I navigate to the Salesforce Site and login as salesexec")
