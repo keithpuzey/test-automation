@@ -68,7 +68,7 @@
 					</systemPropertyVariables>
 
 					<suiteXmlFiles>
-						<suiteXmlFile>${testngXmlDir}/${testngXmlFile}</suiteXmlFile>
+						<suiteXmlFile>src/main/resources/config/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<skipTests>${skipTests}</skipTests>
 				</configuration>
