@@ -28,17 +28,12 @@ TEST_NAME = Perfectotestname
 
 # --- Start Test ---
 def start_test():
-    url = f"https://{perfecto_cloud}/services/executions?operation=execute"
+    url = f"https://{perfecto_cloud}/sciptless/api/executions"
     payload = {
-        "scriptKey": script_key,
-        "securityToken": PerfectoKey,
-        "output": {"visibility": "public"},
-        "parameters": {
-            "PERFECTOTESTURL": PERFECTOTESTURL,
-            "symptom": symptom
-        }
+        "testKey": perfectotest
     }
-    headers = {'Content-Type': 'application/json'}
+    headers = {'Content-Type': 'application/json',"Perfecto-Authorization": PerfectoKey
+    }
     print(f"📡 Sending request to start test: {url}")
     response = requests.post(url, headers=headers, json=payload)
 
@@ -46,7 +41,7 @@ def start_test():
         try:
             r = response.json()
             print("✅ Test initiation response:", r)
-            return r.get("executionId"), r.get("reportKey"), r.get("testGridReportUrl"), r.get("singleTestReportUrl")
+            return r.get("executionId"), r.get("testGridReportUrl")
         except Exception as e:
             print("❌ Failed to parse start-test response:", e)
     else:
