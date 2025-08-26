@@ -91,7 +91,6 @@ def parse_jenkins_log(log_path, junit_out):
 
     # Pretty print XML
     tree = ET.ElementTree(testsuite)
-    ET.indent(tree, space="  ", level=0)  # Python 3.9+
     tree.write(junit_out, encoding="utf-8", xml_declaration=True)
     print(f"JUnit report written to {junit_out}")
 

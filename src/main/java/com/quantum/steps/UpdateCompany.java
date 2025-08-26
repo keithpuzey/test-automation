@@ -32,11 +32,11 @@ public class UpdateCompany {
         driver.executeScript("perfecto:ai:user-action", Map.of("action", "search for account" + companyName ));
     }
 
-    @QAFTestStep(description = "I wait between searches")
-    public void waitBetweenSearches() {
+    @QAFTestStep(description = "I validate screen contains {0}")
+    public void waitBetweenSearches(String companyName ) {
   
                QAFWebDriver driver = new WebDriverTestBase().getDriver();    
-        driver.executeScript("perfecto:ai:user-action", Map.of("action", "Open new order screen!"));
+        driver.executeScript("perfecto:ai:validation", Map.of("validation", "Screen shows details for cmpany" + companyName   ));
      }
 
     /**
