@@ -13,22 +13,23 @@ import com.qmetry.qaf.automation.ui.webdriver.QAFWebDriver;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.core.MessageTypes;
 
-public class SearchDoctorSteps {
+public class UpdateCompany {
 
-    @QAFTestStep(description = "I navigate to the TopDoctors site")
-    public void goToTopDoctors() {
+    @QAFTestStep(description = "I navigate to the SalesForce site")
+    public void goToSalesForce() {
            QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
         driver.executeScript("perfecto:ai:user-action",
-                Map.of("action", "Open new order screen!"));
+            Map.of("action", "go to url https://perforce-dev-ed.develop.my.salesforce.com/"));
+        	Map.of("action", "login as the users salesexec@perforce.com with the password P4Demo123/");	
     }
 
 
     @QAFTestStep(description = "I search for {0}")
-    public void searchDoctor(String doctorName) {
+    public void searchCompany(String companyName) {
            QAFWebDriver driver = new WebDriverTestBase().getDriver();
         
-        driver.executeScript("perfecto:ai:user-action", Map.of("action", "Open new order screen!"));
+        driver.executeScript("perfecto:ai:user-action", Map.of("action", "search for account" + companyName ));
     }
 
     @QAFTestStep(description = "I wait between searches")
