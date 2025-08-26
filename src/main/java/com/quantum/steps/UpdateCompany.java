@@ -15,6 +15,19 @@ import com.qmetry.qaf.automation.core.MessageTypes;
 
 public class UpdateCompany {
 
+	
+    // --- Initialize driver with iOS device ---
+    private QAFWebDriver initIOSDriver() {
+        Map<String, Object> capabilities = new HashMap<>();
+        capabilities.put("platformName", "Android");
+        capabilities.put("model", "Samsung Galaxy Tab S8");              // specify the device model
+
+        // Create driver with these capabilities
+        return new WebDriverTestBase().getDriver(capabilities);
+    }
+    
+	
+	
     @QAFTestStep(description = "I navigate to the Salesforce Site and login as salesexec")
     public void goToSalesForce() {
            QAFWebDriver driver = new WebDriverTestBase().getDriver();
