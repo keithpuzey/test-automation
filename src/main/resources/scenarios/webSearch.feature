@@ -1,9 +1,9 @@
 @Mobile
 @SearchDoctors
-Feature: TC43 - Find a Doctor
+Feature: TC56 - Search and Validate
 
-  Scenario Outline: TC43 - Search doctor name
-   Given I navigate to the TopDoctors site
+  Scenario Outline: TC56 - Search and Validate
+   Given I navigate to the Salesforce Site and login as salesexec
     When I search for "<doctorName>"
     Then I wait between searches
     Examples:
