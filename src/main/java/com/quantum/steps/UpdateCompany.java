@@ -21,10 +21,13 @@ public class UpdateCompany {
     public void goToSalesForce() {
            QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
-        driver.executeScript("perfecto:ai:user-action",
-            Map.of("action", "use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/ "));
-            Map.of("action", "login as the users salesexec@perforce.com with the password P4Demo123");
-    		
+           // Step 1: Open the Salesforce login page
+           driver.executeScript("perfecto:ai:user-action",
+               Map.of("action", "use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/"));
+
+           // Step 2: Perform login
+           driver.executeScript("perfecto:ai:user-action",
+               Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123"));		
     }
 
 
@@ -39,7 +42,7 @@ public class UpdateCompany {
     public void waitBetweenSearches(String companyName ) {
   
                QAFWebDriver driver = new WebDriverTestBase().getDriver();    
-        driver.executeScript("perfecto:ai:validation", Map.of("validation", "Screen shows details for cmpany" + companyName   ));
+        driver.executeScript("perfecto:ai:validation", Map.of("validation", "Screen shows details for company" + companyName   ));
      }
 
     /**
