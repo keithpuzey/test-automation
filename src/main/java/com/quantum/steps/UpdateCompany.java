@@ -23,27 +23,27 @@ public class UpdateCompany {
 
            // Step 1: Open the Salesforce login page
            driver.executeScript("perfecto:ai:user-action",
-               Map.of("action", "use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/"));
+               Map.of("action", "use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/ then login as the user salesexec@perforce.com with the password P4Demo123 "));
 
            // Step 2: Perform login
-           driver.executeScript("perfecto:ai:user-action",
-               Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123"));		
+           //      driver.executeScript("perfecto:ai:user-action",
+        		   //         Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123"));		
     }
 
 
-    @QAFTestStep(description = "I search for {0}")
-    public void searchCompany(String companyName) {
-           QAFWebDriver driver = new WebDriverTestBase().getDriver();
+    //    @QAFTestStep(description = "I search for {0}")
+    // public void searchCompany(String companyName) {
+    //      QAFWebDriver driver = new WebDriverTestBase().getDriver();
         
-        driver.executeScript("perfecto:ai:user-action", Map.of("action", "search for account" + companyName ));
-    }
+    //    driver.executeScript("perfecto:ai:user-action", Map.of("action", "search for account" + companyName ));
+    // }
 
-    @QAFTestStep(description = "I validate screen contains {0}")
-    public void waitBetweenSearches(String companyName ) {
+    // @QAFTestStep(description = "I validate screen contains {0}")
+    //public void waitBetweenSearches(String companyName ) {
   
-               QAFWebDriver driver = new WebDriverTestBase().getDriver();    
-        driver.executeScript("perfecto:ai:validation", Map.of("validation", "Screen shows details for company" + companyName   ));
-     }
+    //             QAFWebDriver driver = new WebDriverTestBase().getDriver();    
+    //   driver.executeScript("perfecto:ai:validation", Map.of("validation", "Screen shows details for company" + companyName   ));
+    // }
 
     /**
      * Returns a Perfecto report URL for each step.
