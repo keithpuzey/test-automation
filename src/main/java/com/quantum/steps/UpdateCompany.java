@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Map;
 import java.time.Duration;
+import java.util.HashMap;
 
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.ui.WebDriverTestBase;
@@ -15,17 +16,10 @@ import com.qmetry.qaf.automation.core.MessageTypes;
 
 public class UpdateCompany {
 
-	
-    // --- Initialize driver with iOS device ---
-    private QAFWebDriver initIOSDriver() {
-        Map<String, Object> capabilities = new HashMap<>();
-        capabilities.put("platformName", "Android");
-        capabilities.put("model", "Samsung Galaxy Tab S8");              // specify the device model
-
-        // Create driver with these capabilities
-        return new WebDriverTestBase().getDriver(capabilities);
-    }
-    
+   
+    private QAFWebDriver getDriver() {
+        return new WebDriverTestBase().getDriver(); // Uses driver.properties configuration
+    }   
 	
 	
     @QAFTestStep(description = "I navigate to the Salesforce Site and login as salesexec")

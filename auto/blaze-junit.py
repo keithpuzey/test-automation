@@ -4,7 +4,6 @@ import sys
 import xml.etree.ElementTree as ET
 import html  # for escaping special chars
 
-
 def parse_jenkins_log(log_path, junit_out):
     test_name = "UnknownTest"
     public_report = "N/A"
@@ -39,13 +38,25 @@ def parse_jenkins_log(log_path, junit_out):
     if m:
         status = "FAILED"
         failure_message = m.group(1).strip()
-        # Escape XML special chars
         failure_message = html.escape(failure_message)
 
     # Extract Jenkins build result
     m = re.search(r"Build step .* changed build result to (\w+)", log)
     if m:
         build_status = m.group(1).strip()
+
+    # Build attributes for <testcase> (Helix-compatible)
+    testcase_attrs = {
+        "classname": "BlazeMeterTest",
+        "name": test_name,
+        "time": "0.000",
+        "Blazemeter_Report_URL": public_report,
+        "Jenkins_Build_Status": build_status
+    }
+
+    # Add aggregated metrics as attributes
+    for key, value in agg_report.items():
+        testcase_attrs[key] = str(value)
 
     # Build JUnit XML
     testsuite = ET.Element("testsuite", {
@@ -57,11 +68,7 @@ def parse_jenkins_log(log_path, junit_out):
         "time": "0.000"
     })
 
-    testcase = ET.SubElement(testsuite, "testcase", {
-        "classname": "BlazeMeterTest",
-        "name": test_name,
-        "time": "0.000"
-    })
+    testcase = ET.SubElement(testsuite, "testcase", testcase_attrs)
 
     # Add failure if exists
     if failure_message:
@@ -69,23 +76,11 @@ def parse_jenkins_log(log_path, junit_out):
             "message": f"Test failed. Reason: {failure_message}"
         })
 
-    # Add <properties> with report + metrics + build status
-    props = ET.SubElement(testcase, "properties")
-    ET.SubElement(props, "property", {"name": "Blazemeter_Report_URL", "value": public_report})
-    ET.SubElement(props, "property", {"name": "Jenkins_Build_Status", "value": build_status})
-
-    for key, value in agg_report.items():
-        ET.SubElement(props, "property", {"name": key, "value": str(value)})
-
-    # Add system-out (for reference)
+    # Add system-out for reference
     sysout = ET.SubElement(testcase, "system-out")
-    sysout.text = (
-        f"Full Report: {public_report}\n"
-        f"Aggregate Report: {json.dumps(agg_report)}\n"
-        f"Build Status: {build_status}"
-    )
+    sysout.text = f"Full Report: {public_report}\nAggregate Report: {json.dumps(agg_report)}\nBuild Status: {build_status}"
 
-    # Write XML (Python <3.9 compatible)
+    # Write XML
     tree = ET.ElementTree(testsuite)
     tree.write(junit_out, encoding="utf-8", xml_declaration=True)
     print(f"✅ JUnit report written to {junit_out}")
