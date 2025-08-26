@@ -15,7 +15,7 @@ import com.qmetry.qaf.automation.core.MessageTypes;
 
 public class UpdateCompany {
 
-    @QAFTestStep(description = "I navigate to the SalesForce site")
+    @QAFTestStep(description = "I navigate to the Salesforce Site and login as salesexec")
     public void goToSalesForce() {
            QAFWebDriver driver = new WebDriverTestBase().getDriver();
 
