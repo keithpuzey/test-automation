@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Perfecto-Suite" time-out="900000"> <test name="Salesforce Test">
+<suite name="Perfecto-Suite" time-out="900000">
 
     <listeners>
         <listener class-name="com.quantum.tests.CustomJUnitListener"/>
