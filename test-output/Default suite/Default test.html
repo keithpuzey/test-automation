@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/0/1</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Aug 27 07:31:44 BST 2025</td>
+<td>Started on:</td><td>Wed Aug 27 09:19:40 BST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>60 seconds (60090 ms)</td>
+<tr><td>Total time:</td><td>99 seconds (99800 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -68,124 +68,7 @@ function toggleAllBoxes() {
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
 <table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='com.quantum.tests.SalesforceAITest.initDriver()'><b>initDriver</b><br>Test class: com.quantum.tests.SalesforceAITest</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Timed out after 60 seconds: Unable to create driver instance in 4th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:168)
-	at com.qmetry.qaf.automation.core.QAFTestBase.init(QAFTestBase.java:487)
-	at com.qmetry.qaf.automation.core.QAFTestBase.getUiDriver(QAFTestBase.java:255)
-	at com.qmetry.qaf.automation.ui.WebDriverTestBase.getDriver(WebDriverTestBase.java:44)
-	at com.quantum.tests.SalesforceAITest.initDriver(SalesforceAITest.java:16)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:361)
-	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:296)
-	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:823)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:590)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at org.testng.TestRunner.privateRun(TestRunner.java:833)
-	at org.testng.TestRunner.run(TestRunner.java:606)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-	at org.testng.TestNG.runSuites(TestNG.java:1099)
-	at org.testng.TestNG.run(TestNG.java:1067)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.WebDriverException: Unable to create driver instance in 4th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
-Driver info: driver.version: unknown
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:585)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:567)
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:147)
-	... 34 more
-Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandProcessor
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
-	at com.qmetry.qaf.automation.ui.UiDriverFactory.get(UiDriverFactory.java:97)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:581)
-	... 36 more
-</pre></div><a href='#' onClick='toggleBox("stack-trace858232531", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace858232531'><pre>org.openqa.selenium.TimeoutException: Timed out after 60 seconds: Unable to create driver instance in 4th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:168)
-	at com.qmetry.qaf.automation.core.QAFTestBase.init(QAFTestBase.java:487)
-	at com.qmetry.qaf.automation.core.QAFTestBase.getUiDriver(QAFTestBase.java:255)
-	at com.qmetry.qaf.automation.ui.WebDriverTestBase.getDriver(WebDriverTestBase.java:44)
-	at com.quantum.tests.SalesforceAITest.initDriver(SalesforceAITest.java:16)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:361)
-	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:296)
-	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:823)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:590)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at org.testng.TestRunner.privateRun(TestRunner.java:833)
-	at org.testng.TestRunner.run(TestRunner.java:606)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-	at org.testng.TestNG.runSuites(TestNG.java:1099)
-	at org.testng.TestNG.run(TestNG.java:1067)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.WebDriverException: Unable to create driver instance in 4th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
-Driver info: driver.version: unknown
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:585)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:567)
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:147)
-	... 34 more
-Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandProcessor
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
-	at com.qmetry.qaf.automation.ui.UiDriverFactory.get(UiDriverFactory.java:97)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:581)
-	... 36 more
-</pre></div></td>
-<td>60</td>
-<td>com.quantum.tests.SalesforceAITest@1187c9e8</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-skipped'>
-<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -194,20 +77,38 @@ Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandPr
 </tr>
 <tr>
 <td title='com.quantum.tests.SalesforceAITest.loginSearchValidateCompany()'><b>loginSearchValidateCompany</b><br>Test class: com.quantum.tests.SalesforceAITest</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Timed out after 60 seconds: Unable to create driver instance in 4th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:168)
-	at com.qmetry.qaf.automation.core.QAFTestBase.init(QAFTestBase.java:487)
-	at com.qmetry.qaf.automation.core.QAFTestBase.getUiDriver(QAFTestBase.java:255)
-	at com.qmetry.qaf.automation.ui.WebDriverTestBase.getDriver(WebDriverTestBase.java:44)
-	at com.quantum.tests.SalesforceAITest.initDriver(SalesforceAITest.java:16)
+<td><div><pre>org.openqa.selenium.TimeoutException: java.net.http.HttpTimeoutException: request timed out
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
+Driver info: driver.version: QAFExtendedWebDriver
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
+Driver info: com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver
+Command: [edbbca63-1e10-4a30-a16a-0828f2c0cc99, executeScript {args=[{action=use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/}], script=perfecto:ai:user-action}]
+Capabilities {app: , appiumVersion: latest, assert_javascript_enabled: true, audioStreamInfo: {&quot;audioStreamingServerUrl&quot;:..., automationName: UIAutomator2, browserName: Chrome, databaseEnabled: false, desired: {appActivity: com.android.chrome/com.goog..., appPackage: com.android.chrome, appiumVersion: latest, automationName: UIAutomator2, browserName: Chrome, deviceName: RFCX30181MV, platformName: Android, platformVersion: 14, useAppiumForHybrid: false}, deviceApiLevel: 34, deviceManufacturer: samsung, deviceModel: SM-S911U1, deviceName: RFCX30181MV, deviceScreenDensity: 480, deviceScreenSize: 1080x2340, deviceSessionId: edbbca63-1e10-4a30-a16a-082..., deviceUDID: RFCX30181MV, enableAppiumBehavior: false, entityType: remote_web_driver, executionId: edbbca63-1e10-4a30-a16a-082..., host: demo.perfectomobile.com, internalPureAppiumFlow: true, javascriptEnabled: true, locationContextEnabled: false, mcmExecutionId: kpuzey@perforce.com_RemoteW..., networkConnectionEnabled: true, password: , pixelRatio: 3, platform: LINUX, platformName: ANDROID, platformVersion: 14, reportPdfUrl: https://demo.app.perfectomo..., scriptName: RemoteWebDriver, securePureAppiumFlow: false, securityToken: , serverConnector: , statBarHeight: 81, stopUrl: https://demo.perfectomobile..., streamInfo: {&quot;url&quot;:&quot;wss://ams-01.perfec..., takesScreenshot: true, testGridReportUrl: https://demo.app.perfectomo..., testRunWithPureAppiumFlow: true, useAppiumForHybrid: false, useAppiumForWeb: false, viewportRect: {height: 2259, left: 0, top: 81, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: edbbca63-1e10-4a30-a16a-0828f2c0cc99
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at java.base/java.util.function.Function.lambda$andThen$1(Function.java:88)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$9(RemoteWebDriverBuilder.java:448)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$10(RemoteWebDriverBuilder.java:455)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$11(RemoteWebDriverBuilder.java:460)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$12(RemoteWebDriverBuilder.java:470)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeSuper(QAFExtendedWebDriver.java:277)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeWithoutLog(QAFExtendedWebDriver.java:295)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeWitoutLog(QAFExtendedWebDriver.java:344)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.execute(QAFExtendedWebDriver.java:321)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeScript(QAFExtendedWebDriver.java:727)
+	at com.quantum.tests.SalesforceAITest.loginSearchValidateCompany(SalesforceAITest.java:21)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:361)
-	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:296)
-	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:823)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:590)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
 	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
 	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
@@ -230,36 +131,39 @@ Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandPr
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.WebDriverException: Unable to create driver instance in 4th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
+</pre></div><a href='#' onClick='toggleBox("stack-trace806738808", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace806738808'><pre>org.openqa.selenium.TimeoutException: java.net.http.HttpTimeoutException: request timed out
 Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
 System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
-Driver info: driver.version: unknown
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:585)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:567)
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:147)
-	... 34 more
-Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandProcessor
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
-	at com.qmetry.qaf.automation.ui.UiDriverFactory.get(UiDriverFactory.java:97)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:581)
-	... 36 more
-</pre></div><a href='#' onClick='toggleBox("stack-trace840083671", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace840083671'><pre>org.openqa.selenium.TimeoutException: Timed out after 60 seconds: Unable to create driver instance in 4th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:168)
-	at com.qmetry.qaf.automation.core.QAFTestBase.init(QAFTestBase.java:487)
-	at com.qmetry.qaf.automation.core.QAFTestBase.getUiDriver(QAFTestBase.java:255)
-	at com.qmetry.qaf.automation.ui.WebDriverTestBase.getDriver(WebDriverTestBase.java:44)
-	at com.quantum.tests.SalesforceAITest.initDriver(SalesforceAITest.java:16)
+Driver info: driver.version: QAFExtendedWebDriver
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
+Driver info: com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver
+Command: [edbbca63-1e10-4a30-a16a-0828f2c0cc99, executeScript {args=[{action=use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/}], script=perfecto:ai:user-action}]
+Capabilities {app: , appiumVersion: latest, assert_javascript_enabled: true, audioStreamInfo: {&quot;audioStreamingServerUrl&quot;:..., automationName: UIAutomator2, browserName: Chrome, databaseEnabled: false, desired: {appActivity: com.android.chrome/com.goog..., appPackage: com.android.chrome, appiumVersion: latest, automationName: UIAutomator2, browserName: Chrome, deviceName: RFCX30181MV, platformName: Android, platformVersion: 14, useAppiumForHybrid: false}, deviceApiLevel: 34, deviceManufacturer: samsung, deviceModel: SM-S911U1, deviceName: RFCX30181MV, deviceScreenDensity: 480, deviceScreenSize: 1080x2340, deviceSessionId: edbbca63-1e10-4a30-a16a-082..., deviceUDID: RFCX30181MV, enableAppiumBehavior: false, entityType: remote_web_driver, executionId: edbbca63-1e10-4a30-a16a-082..., host: demo.perfectomobile.com, internalPureAppiumFlow: true, javascriptEnabled: true, locationContextEnabled: false, mcmExecutionId: kpuzey@perforce.com_RemoteW..., networkConnectionEnabled: true, password: , pixelRatio: 3, platform: LINUX, platformName: ANDROID, platformVersion: 14, reportPdfUrl: https://demo.app.perfectomo..., scriptName: RemoteWebDriver, securePureAppiumFlow: false, securityToken: , serverConnector: , statBarHeight: 81, stopUrl: https://demo.perfectomobile..., streamInfo: {&quot;url&quot;:&quot;wss://ams-01.perfec..., takesScreenshot: true, testGridReportUrl: https://demo.app.perfectomo..., testRunWithPureAppiumFlow: true, useAppiumForHybrid: false, useAppiumForWeb: false, viewportRect: {height: 2259, left: 0, top: 81, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: edbbca63-1e10-4a30-a16a-0828f2c0cc99
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at java.base/java.util.function.Function.lambda$andThen$1(Function.java:88)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$9(RemoteWebDriverBuilder.java:448)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$10(RemoteWebDriverBuilder.java:455)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$11(RemoteWebDriverBuilder.java:460)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$12(RemoteWebDriverBuilder.java:470)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeSuper(QAFExtendedWebDriver.java:277)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeWithoutLog(QAFExtendedWebDriver.java:295)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeWitoutLog(QAFExtendedWebDriver.java:344)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.execute(QAFExtendedWebDriver.java:321)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeScript(QAFExtendedWebDriver.java:727)
+	at com.quantum.tests.SalesforceAITest.loginSearchValidateCompany(SalesforceAITest.java:21)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:361)
-	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:296)
-	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:823)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:590)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
 	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
 	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
@@ -282,23 +186,8 @@ Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandPr
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.WebDriverException: Unable to create driver instance in 4th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
-Driver info: driver.version: unknown
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:585)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:567)
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:147)
-	... 34 more
-Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandProcessor
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
-	at com.qmetry.qaf.automation.ui.UiDriverFactory.get(UiDriverFactory.java:97)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:581)
-	... 36 more
 </pre></div></td>
-<td>0</td>
+<td>60</td>
 <td>com.quantum.tests.SalesforceAITest@1187c9e8</td></tr>
 </table><p>
 </body>

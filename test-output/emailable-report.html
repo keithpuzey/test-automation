@@ -8,56 +8,65 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">PerfectoSuite</th></tr>
-<tr><td><a href="#t0">MobileTest</a></td><td class="num">0</td><td class="num attn">1</td><td class="num">0</td><td class="num">0</td><td class="num">79,982</td><td></td><td></td></tr>
+<tr><th colspan="8">Default suite</th></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">99,800</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">PerfectoSuite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">MobileTest &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">com.quantum.tests.SalesforceAITest</td><td><a href="#m0">initDriver</a></td><td rowspan="1">1756276592986</td><td rowspan="1">79952</td></tr><tr><th colspan="4">MobileTest &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">com.quantum.tests.SalesforceAITest</td><td><a href="#m1">loginSearchValidateCompany</a></td><td rowspan="1">1756276672952</td><td rowspan="1">0</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.quantum.tests.SalesforceAITest</td><td><a href="#m0">loginSearchValidateCompany</a></td><td rowspan="1">1756282818391</td><td rowspan="1">60026</td></tr></tbody>
 </table>
-<h2>MobileTest</h2><h3 id="m0">com.quantum.tests.SalesforceAITest#initDriver</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Timed out after 60 seconds: Unable to create driver instance in 5th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:168)
-	at com.qmetry.qaf.automation.core.QAFTestBase.init(QAFTestBase.java:487)
-	at com.qmetry.qaf.automation.core.QAFTestBase.getUiDriver(QAFTestBase.java:255)
-	at com.qmetry.qaf.automation.ui.WebDriverTestBase.getDriver(WebDriverTestBase.java:44)
-	at com.quantum.tests.SalesforceAITest.initDriver(SalesforceAITest.java:16)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: org.openqa.selenium.WebDriverException: Unable to create driver instance in 5th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
+<h2>Default test</h2><h3 id="m0">com.quantum.tests.SalesforceAITest#loginSearchValidateCompany</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: java.net.http.HttpTimeoutException: request timed out
 Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
 System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
-Driver info: driver.version: unknown
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:585)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:567)
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:147)
-	... 34 more
-Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandProcessor
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
-	at com.qmetry.qaf.automation.ui.UiDriverFactory.get(UiDriverFactory.java:97)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:581)
-	... 36 more
-... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.quantum.tests.SalesforceAITest#loginSearchValidateCompany</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Timed out after 60 seconds: Unable to create driver instance in 5th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:168)
-	at com.qmetry.qaf.automation.core.QAFTestBase.init(QAFTestBase.java:487)
-	at com.qmetry.qaf.automation.core.QAFTestBase.getUiDriver(QAFTestBase.java:255)
-	at com.qmetry.qaf.automation.ui.WebDriverTestBase.getDriver(WebDriverTestBase.java:44)
-	at com.quantum.tests.SalesforceAITest.initDriver(SalesforceAITest.java:16)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: org.openqa.selenium.WebDriverException: Unable to create driver instance in 5th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
+Driver info: driver.version: QAFExtendedWebDriver
 Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
 System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
-Driver info: driver.version: unknown
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:585)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:567)
-	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:147)
-	... 34 more
-Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandProcessor
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
-	at com.qmetry.qaf.automation.ui.UiDriverFactory.get(UiDriverFactory.java:97)
-	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:581)
-	... 36 more
-... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+Driver info: com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver
+Command: [edbbca63-1e10-4a30-a16a-0828f2c0cc99, executeScript {args=[{action=use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/}], script=perfecto:ai:user-action}]
+Capabilities {app: , appiumVersion: latest, assert_javascript_enabled: true, audioStreamInfo: {&quot;audioStreamingServerUrl&quot;:..., automationName: UIAutomator2, browserName: Chrome, databaseEnabled: false, desired: {appActivity: com.android.chrome/com.goog..., appPackage: com.android.chrome, appiumVersion: latest, automationName: UIAutomator2, browserName: Chrome, deviceName: RFCX30181MV, platformName: Android, platformVersion: 14, useAppiumForHybrid: false}, deviceApiLevel: 34, deviceManufacturer: samsung, deviceModel: SM-S911U1, deviceName: RFCX30181MV, deviceScreenDensity: 480, deviceScreenSize: 1080x2340, deviceSessionId: edbbca63-1e10-4a30-a16a-082..., deviceUDID: RFCX30181MV, enableAppiumBehavior: false, entityType: remote_web_driver, executionId: edbbca63-1e10-4a30-a16a-082..., host: demo.perfectomobile.com, internalPureAppiumFlow: true, javascriptEnabled: true, locationContextEnabled: false, mcmExecutionId: kpuzey@perforce.com_RemoteW..., networkConnectionEnabled: true, password: , pixelRatio: 3, platform: LINUX, platformName: ANDROID, platformVersion: 14, reportPdfUrl: https://demo.app.perfectomo..., scriptName: RemoteWebDriver, securePureAppiumFlow: false, securityToken: , serverConnector: , statBarHeight: 81, stopUrl: https://demo.perfectomobile..., streamInfo: {&quot;url&quot;:&quot;wss://ams-01.perfec..., takesScreenshot: true, testGridReportUrl: https://demo.app.perfectomo..., testRunWithPureAppiumFlow: true, useAppiumForHybrid: false, useAppiumForWeb: false, viewportRect: {height: 2259, left: 0, top: 81, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: edbbca63-1e10-4a30-a16a-0828f2c0cc99
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at java.base/java.util.function.Function.lambda$andThen$1(Function.java:88)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$9(RemoteWebDriverBuilder.java:448)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$10(RemoteWebDriverBuilder.java:455)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$11(RemoteWebDriverBuilder.java:460)
+	at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$12(RemoteWebDriverBuilder.java:470)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeSuper(QAFExtendedWebDriver.java:277)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeWithoutLog(QAFExtendedWebDriver.java:295)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeWitoutLog(QAFExtendedWebDriver.java:344)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.execute(QAFExtendedWebDriver.java:321)
+	at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeScript(QAFExtendedWebDriver.java:727)
+	at com.quantum.tests.SalesforceAITest.loginSearchValidateCompany(SalesforceAITest.java:21)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.testng.TestRunner.privateRun(TestRunner.java:833)
+	at org.testng.TestRunner.run(TestRunner.java:606)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+	at org.testng.TestNG.runSuites(TestNG.java:1099)
+	at org.testng.TestNG.run(TestNG.java:1067)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
