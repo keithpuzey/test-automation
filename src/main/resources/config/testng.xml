@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Quantum Test Suite">
+<suite name="TC56 - Search and Validate">
     <test name="TC56 - Search and Validate">
         <packages>
             <package name="com.quantum.tests" />
