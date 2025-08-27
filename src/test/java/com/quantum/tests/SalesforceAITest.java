@@ -23,7 +23,7 @@ public class SalesforceAITest implements ITest {
 
     @DataProvider(name = "accountProvider")
     public Object[][] getAccounts() throws Exception {
-        Iterator<Object[]> csvData = CSVUtils.readCSV("src/test/resources/accounts.csv");
+    	Iterator<Object[]> csvData = CSVUtils.readCSV("accounts.csv");
         List<Object[]> list = new ArrayList<>();
         csvData.forEachRemaining(list::add);
         return list.toArray(new Object[0][]);
