@@ -1,8 +1,17 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="TC56 - Search and Validate">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Salesforce AI Test Suite">
+
+    <!-- Listener can be added here if you implement custom JUnit XML output -->
+    <!--
+    <listeners>
+        <listener class-name="com.quantum.tests.CustomJUnitListener"/>
+    </listeners>
+    -->
+
     <test name="TC56 - Search and Validate">
         <packages>
-            <package name="com.quantum.tests" />
+            <package name="com.quantum.tests"/>
         </packages>
     </test>
+
 </suite>

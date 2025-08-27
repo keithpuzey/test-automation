@@ -7,14 +7,14 @@ import org.testng.annotations.Test;
 import com.qmetry.qaf.automation.ui.WebDriverTestBase;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebDriver;
 import java.util.Map;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SalesforceAITest implements ITest {
 
     private QAFWebDriver driver;
-    private String currentTestName; // for dynamic JUnit test case name
+    private String currentTestName;
 
     @BeforeMethod
     public void initDriver() {
@@ -23,15 +23,15 @@ public class SalesforceAITest implements ITest {
 
     @DataProvider(name = "accountProvider")
     public Object[][] getAccounts() throws Exception {
-        Iterator<Object[]> csvData = CSVUtils.readCSV("accounts.csv");
+        // Use file system path to avoid classpath issues
+        Iterator<Object[]> csvData = CSVUtils.readCSV("src/test/resources/accounts.csv");
         List<Object[]> list = new ArrayList<>();
         csvData.forEachRemaining(list::add);
         return list.toArray(new Object[0][]);
     }
 
-    @Test(dataProvider = "accountProvider", testName = "TC56 - Search and Validate")
+    @Test(dataProvider = "accountProvider")
     public void loginSearchValidateCompany(String accountName) {
-        // Set the dynamic test name for ITest
         currentTestName = "TC56 - Search and Validate [" + accountName + "]";
 
         driver.executeScript("perfecto:ai:user-action",
@@ -49,6 +49,6 @@ public class SalesforceAITest implements ITest {
 
     @Override
     public String getTestName() {
-        return currentTestName;  // TestNG uses this for JUnit / HTML report
+        return currentTestName;
     }
 }
