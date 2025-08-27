@@ -8,11 +8,15 @@ import java.util.List;
 
 public class CSVUtils {
 
-    public static Iterator<Object[]> readCSV(String resourcePath) throws Exception {
+    public static Iterator<Object[]> readCSV(String resourceName) throws Exception {
         List<Object[]> data = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(
-                CSVUtils.class.getClassLoader().getResourceAsStream(resourcePath)))) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(CSVUtils.class.getClassLoader().getResourceAsStream(resourceName)))) {
+
+            if (br == null) {
+                throw new RuntimeException("CSV file not found in classpath: " + resourceName);
+            }
 
             String line;
             boolean header = true;
