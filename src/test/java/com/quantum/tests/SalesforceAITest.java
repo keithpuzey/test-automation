@@ -5,33 +5,22 @@ import org.testng.ITest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebDriver;
-import com.qmetry.qaf.automation.ui.WebDriverTestBase;
-
+import com.qmetry.qaf.automation.core.DriverFactory;
+import com.qmetry.qaf.automation.ui.WebDriverTestBase; // Correct import
+import com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver;
 import java.net.MalformedURLException;
 import java.util.Map;
 
-public class SalesforceAITest implements ITest {
+// Corrected class declaration
+public class SalesforceAITest extends WebDriverTestBase implements ITest { 
 
     private QAFWebDriver driver;
     private String currentTestName;
 
     @BeforeMethod
-    public void initDriver() throws MalformedURLException {
-        DesiredCapabilities caps = new DesiredCapabilities();
-
-        // Perfecto authentication
-        caps.setCapability("perfecto:user", "<your-user>");
-        caps.setCapability("perfecto:securityToken", "<your-token>");
-
-        // Device selection
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("appium:platformVersion", "14");  // appium: prefix is important in W3C
-        caps.setCapability("deviceName", ".*"); // regex for any device
-
-        // Browser
-        caps.setCapability("browserName", "Chrome");
-
-        driver = new WebDriverTestBase(caps).getDriver();
+    public void setupDriver() {
+        // The getDriver() method is available because the class extends WebDriverTestBase
+        driver = getDriver(); 
     }
 
     @Test
