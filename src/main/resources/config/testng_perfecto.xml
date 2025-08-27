@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="PerfectoSuite">
+  <parameter name="perfecto.cloud.name" value="demo.perfectomobile.com"/>
+  <parameter name="perfecto.security.token" value=""/>
+  <test name="MobileTest">
+    <parameter name="platformName" value="Android"/>
+    <parameter name="perfecto:model" value="Galaxy S.*"/>
+        <packages>
+            <package name="com.quantum.tests" />
+        </packages>s>
+  </test>
+</suite>

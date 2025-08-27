@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-PerfectoSuite" class="navigator-link">
+              <span class="suite-name border-skipped">PerfectoSuite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-PerfectoSuite" class="navigator-link ">
+                    <span>testng_perfecto.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-PerfectoSuite" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-PerfectoSuite" class="navigator-link ">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-PerfectoSuite" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-PerfectoSuite" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-PerfectoSuite" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-PerfectoSuite" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">1 method,  1 skipped,  </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-PerfectoSuite" class="hide-methods skipped suite-PerfectoSuite"> (hide)</a> <!-- hide-methods skipped suite-PerfectoSuite -->
+                      <a href="#" panel-name="suite-PerfectoSuite" class="show-methods skipped suite-PerfectoSuite"> (show)</a> <!-- show-methods skipped suite-PerfectoSuite -->
+                    </span>
+                    <div class="method-list-content skipped suite-PerfectoSuite">
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-PerfectoSuite" title="com.quantum.tests.SalesforceAITest" class="method navigator-link" hash-for-method="loginSearchValidateCompany">loginSearchValidateCompany</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-PerfectoSuite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-PerfectoSuite" class="panel PerfectoSuite">
+          <div class="suite-PerfectoSuite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">com.quantum.tests.SalesforceAITest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="loginSearchValidateCompany">
+                  </a> <!-- loginSearchValidateCompany -->
+                  <span class="method-name">loginSearchValidateCompany</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Timed out after 60 seconds: Unable to create driver instance in 5th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
+	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:168)
+	at com.qmetry.qaf.automation.core.QAFTestBase.init(QAFTestBase.java:487)
+	at com.qmetry.qaf.automation.core.QAFTestBase.getUiDriver(QAFTestBase.java:255)
+	at com.qmetry.qaf.automation.ui.WebDriverTestBase.getDriver(WebDriverTestBase.java:44)
+	at com.quantum.tests.SalesforceAITest.initDriver(SalesforceAITest.java:16)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: org.openqa.selenium.WebDriverException: Unable to create driver instance in 5th attempt with retry timeout of 60 seconds. You can check/set value of &apos;driver.init.retry.timeout.seconds&apos; appropriately to set retry timeout on driver initialization failure.
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;15.6.1&apos;, java.version: &apos;22.0.1&apos;
+Driver info: driver.version: unknown
+	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:585)
+	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:567)
+	at com.qmetry.qaf.automation.ui.util.DynamicWait.until(DynamicWait.java:147)
+	... 34 more
+Caused by: java.lang.ClassNotFoundException: com.thoughtworks.selenium.CommandProcessor
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at com.qmetry.qaf.automation.ui.UiDriverFactory.get(UiDriverFactory.java:97)
+	at com.qmetry.qaf.automation.core.QAFTestBase$DriverInitExpectedCondition.apply(QAFTestBase.java:581)
+	... 36 more
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-PerfectoSuite-class-skipped -->
+        </div> <!-- panel PerfectoSuite -->
+        <div panel-name="test-xml-PerfectoSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">/Users/keithpuzey/github/Demo/test-automation/src/main/resources/config/testng_perfecto.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;PerfectoSuite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;parameter name=&quot;perfecto.security.token&quot; value=&quot;eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4YmI4YmZmZS1kMzBjLTQ2MjctYmMxMS0zNTYyMmY1ZDkyMGYifQ.eyJpYXQiOjE3NTI3NDUyMjIsImp0aSI6IjA4OWY4M2M3LWRiOGEtNDA1ZS04MzgxLTk3MTRjYjBhYTRiYyIsImlzcyI6Imh0dHBzOi8vYXV0aC5wZXJmZWN0b21vYmlsZS5jb20vYXV0aC9yZWFsbXMvZGVtby1wZXJmZWN0b21vYmlsZS1jb20iLCJhdWQiOiJodHRwczovL2F1dGgucGVyZmVjdG9tb2JpbGUuY29tL2F1dGgvcmVhbG1zL2RlbW8tcGVyZmVjdG9tb2JpbGUtY29tIiwic3ViIjoiNjNhZDQ4ZDktOGNlNC00MWE3LTkzYjMtNDM1ZDQ4OWVjOWQwIiwidHlwIjoiT2ZmbGluZSIsImF6cCI6Im9mZmxpbmUtdG9rZW4tZ2VuZXJhdG9yIiwibm9uY2UiOiJjZjkxYjQwMC04OTU4LTQ5ZjctODhkMS0yMmVjYjM2N2Y0OTQiLCJzZXNzaW9uX3N0YXRlIjoiNDMyYTA5ZWMtNjcxZS00OWFmLWIzMjAtYTRlZjgwZTMwNzE4Iiwic2NvcGUiOiJvcGVuaWQgb2ZmbGluZV9hY2Nlc3MiLCJzaWQiOiI0MzJhMDllYy02NzFlLTQ5YWYtYjMyMC1hNGVmODBlMzA3MTgifQ.KfPKVWUbJmMXxTXUrcOPJHWS8AZrf7LQ9a0bVd3razM&quot;/&gt;
+  &lt;parameter name=&quot;perfecto.cloud.name&quot; value=&quot;demo.perfectomobile.com&quot;/&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;MobileTest&quot;&gt;
+    &lt;method-selectors&gt;
+      &lt;method-selector&gt;
+        &lt;selector-class name=&quot;com.qmetry.qaf.automation.testng.pro.QAFMethodSelector&quot; priority=&quot;0&quot;/&gt;
+      &lt;/method-selector&gt;
+    &lt;/method-selectors&gt;
+    &lt;parameter name=&quot;platformName&quot; value=&quot;Android&quot;/&gt;
+    &lt;parameter name=&quot;perfecto:model&quot; value=&quot;Galaxy S.*&quot;/&gt;
+    &lt;packages&gt;
+      &lt;package name=&quot;com.quantum.tests&quot;/&gt;
+    &lt;/packages&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.quantum.tests.SalesforceAITest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- MobileTest --&gt;
+&lt;/suite&gt; &lt;!-- PerfectoSuite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-PerfectoSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for PerfectoSuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">MobileTest (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-PerfectoSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for PerfectoSuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-PerfectoSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for PerfectoSuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_PerfectoSuite');
+function tableData_PerfectoSuite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(1);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'loginSearchValidateCompany')
+data.setCell(0, 2, 'com.quantum.tests.SalesforceAITest')
+data.setCell(0, 3, 0);
+window.suiteTableData['PerfectoSuite']= { tableData: data, tableDiv: 'times-div-PerfectoSuite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 0 ms</span>
+              <div id="times-div-PerfectoSuite">
+              </div> <!-- times-div-PerfectoSuite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-PerfectoSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for PerfectoSuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-PerfectoSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-PerfectoSuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.quantum.tests.SalesforceAITest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">initDriver</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">loginSearchValidateCompany</span>
+                <span class="method-start">79966 ms</span>
+              </div> <!-- test-method -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>

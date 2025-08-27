@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Quantum Test Suite">
-    <test name="Salesforce AI Test">
+    <test name="TC56 - Search and Validate">
         <packages>
             <package name="com.quantum.tests" />
         </packages>
