@@ -61,6 +61,7 @@
 
 				<configuration>
 					<argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
+					<forkedProcessTimeoutInSeconds>900</forkedProcessTimeoutInSeconds>
 					<reportsDirectory>${project.build.directory}/test-results</reportsDirectory>
 					<systemPropertyVariables>
 						<!--<application.properties.file>
