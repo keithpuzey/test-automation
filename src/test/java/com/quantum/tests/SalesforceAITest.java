@@ -8,13 +8,13 @@ import com.qmetry.qaf.automation.ui.WebDriverTestBase;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebDriver;
 import java.util.Map;
 import java.util.Iterator;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class SalesforceAITest implements ITest {
 
     private QAFWebDriver driver;
-    private String currentTestName;  // store dynamic test name
+    private String currentTestName; // for dynamic JUnit test case name
 
     @BeforeMethod
     public void initDriver() {
@@ -23,7 +23,7 @@ public class SalesforceAITest implements ITest {
 
     @DataProvider(name = "accountProvider")
     public Object[][] getAccounts() throws Exception {
-        Iterator<Object[]> csvData = CSVUtils.readCSV("accounts.csv"); // classpath resource
+        Iterator<Object[]> csvData = CSVUtils.readCSV("accounts.csv");
         List<Object[]> list = new ArrayList<>();
         csvData.forEachRemaining(list::add);
         return list.toArray(new Object[0][]);
