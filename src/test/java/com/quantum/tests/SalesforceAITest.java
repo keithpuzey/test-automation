@@ -23,7 +23,7 @@ public class SalesforceAITest implements ITest {
         currentTestName = "TC56 - Search and Validate [" + accountName + "]";
 
         driver.executeScript("perfecto:ai:user-action",
-                Map.of("action", "use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/ ,login as the user salesexec@perforce.com with the password P4Demo123, click login"));
+                Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123 using the url https://perforce-dev-ed.develop.my.salesforce.com/ "));
   
     }
 
