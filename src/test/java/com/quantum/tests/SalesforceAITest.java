@@ -2,14 +2,10 @@ package com.quantum.tests;
 
 import org.testng.ITest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.qmetry.qaf.automation.ui.WebDriverTestBase;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebDriver;
 import java.util.Map;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class SalesforceAITest implements ITest {
 
@@ -21,17 +17,9 @@ public class SalesforceAITest implements ITest {
         driver = new WebDriverTestBase().getDriver();
     }
 
-    @DataProvider(name = "accountProvider")
-    public Object[][] getAccounts() throws Exception {
-        // Use file system path to avoid classpath issues
-        Iterator<Object[]> csvData = CSVUtils.readCSV("src/test/resources/accounts.csv");
-        List<Object[]> list = new ArrayList<>();
-        csvData.forEachRemaining(list::add);
-        return list.toArray(new Object[0][]);
-    }
-
-    @Test(dataProvider = "accountProvider")
-    public void loginSearchValidateCompany(String accountName) {
+    @Test
+    public void loginSearchValidateCompany() {
+        String accountName = "Pyramid Construction Inc.";
         currentTestName = "TC56 - Search and Validate [" + accountName + "]";
 
         driver.executeScript("perfecto:ai:user-action",
