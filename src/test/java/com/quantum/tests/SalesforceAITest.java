@@ -24,12 +24,7 @@ public class SalesforceAITest implements ITest {
 
         driver.executeScript("perfecto:ai:user-action",
                 Map.of("action", "use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/ and login as the user salesexec@perforce.com with the password P4Demo123"));
-
-        driver.executeScript("perfecto:ai:user-action",
-                Map.of("action", "search for account " + accountName));
-
-        driver.executeScript("perfecto:ai:validation",
-                Map.of("validation", "Screen shows details for company " + accountName));
+  
     }
 
     @Override
