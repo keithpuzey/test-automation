@@ -18,7 +18,7 @@ public class SalesforceAITest implements ITest {
     }
 
     @Test
-    public void loginSearchValidateCompany() {
+    public void TC56_loginSearchValidateCompany() {
         String accountName = "Pyramid Construction Inc.";
         currentTestName = "TC56 - Search and Validate [" + accountName + "]";
 
