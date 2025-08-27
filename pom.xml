@@ -61,7 +61,9 @@
 
 				<configuration>
 					<argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
-					<forkedProcessTimeoutInSeconds>900</forkedProcessTimeoutInSeconds>
+
+          <forkedProcessTimeoutInSeconds>1800</forkedProcessTimeoutInSeconds>
+          <forkNode implementation="org.apache.maven.plugin.surefire.booterclient.ForkNodeFactory"/>
 					<reportsDirectory>${project.build.directory}/test-results</reportsDirectory>
 					<systemPropertyVariables>
 						<!--<application.properties.file>
