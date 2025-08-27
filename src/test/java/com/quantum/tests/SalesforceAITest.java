@@ -29,7 +29,7 @@ public class SalesforceAITest implements ITest {
         return list.toArray(new Object[0][]);
     }
 
-    @Test(dataProvider = "accountProvider")
+    @Test(dataProvider = "accountProvider", testName = "TC56 - Search and Validate")
     public void loginSearchValidateCompany(String accountName) {
         // Set the dynamic test name for ITest
         currentTestName = "TC56 - Search and Validate [" + accountName + "]";
