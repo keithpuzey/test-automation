@@ -175,7 +175,7 @@ def main():
             )
             sys.exit(0 if result == "passed" else 1)
 
-        time.sleep(10)
+        time.sleep(30)
 
 if __name__ == "__main__":
     main()
