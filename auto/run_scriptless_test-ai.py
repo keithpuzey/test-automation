@@ -29,11 +29,9 @@ TEST_NAME = Perfectotestname
 # --- Start Test ---
 def start_test():
     url = f"https://{perfecto_cloud}/scriptless/api/executions"
-    payload = {
-        "testKey": Perfectotest
-    }
-    headers = {'Content-Type': 'application/json',"Perfecto-Authorization": PerfectoKey
-    }
+    payload = { "testKey": Perfectotest }
+    headers = {'Content-Type': 'application/json',"Perfecto-Authorization": PerfectoKey}
+
     print(f"📡 Sending request to start test: {url}")
     response = requests.post(url, headers=headers, json=payload)
 
@@ -46,7 +44,7 @@ def start_test():
             print("❌ Failed to parse start-test response:", e)
     else:
         print(f"❌ Error starting test: {response.status_code} {response.text}")
-    return None, None, None, None
+    return None, None
 
 # --- Check Test Status ---
 def check_test_status(execution_id):
@@ -119,7 +117,8 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_name, rea
 # --- Main ---
 def main():
     start_time = time.time()
-    execution_id, report_key, test_grid_report_url, single_test_report_url = start_test()
+    execution_id, test_grid_report_url = start_test()  # ✅ Only 2 values
+
     if execution_id is None:
         generate_junit_xml(TEST_NAME, "failed", "N/A", None, reason="Failed to start test", duration_seconds=0.0)
         sys.exit(1)
@@ -130,7 +129,7 @@ def main():
         status, report_key, devices, description, failed_cmds, end_code = check_test_status(execution_id)
         if status is None:
             duration = time.time() - start_time
-            generate_junit_xml(TEST_NAME, "failed", report_key, None, reason="Could not fetch status", duration_seconds=duration)
+            generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, None, reason="Could not fetch status", duration_seconds=duration)
             sys.exit(1)
 
         print(f"Current status: {status}", flush=True)
@@ -142,7 +141,7 @@ def main():
         if status.lower() in ['completed', 'failed', 'stopped']:
             duration = time.time() - start_time
             result = "failed" if failed_cmds and failed_cmds > 0 else "passed"
-            generate_junit_xml(TEST_NAME, result, report_key, device_name, reason=description, duration_seconds=duration, end_code=end_code)
+            generate_junit_xml(TEST_NAME, result, test_grid_report_url, device_name, reason=description, duration_seconds=duration, end_code=end_code)
             sys.exit(0 if result == "passed" else 1)
 
         time.sleep(10)
