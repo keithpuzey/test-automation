@@ -50,22 +50,24 @@ def start_test():
 
 # --- Check Test Status ---
 def check_test_status(execution_id):
-    url = f"https://{perfecto_cloud}/services/executions/{execution_id}?operation=status&securityToken={PerfectoKey}"
+    url = f"https://{perfecto_cloud}/scriptless/api/executions/{execution_id}"
+    headers = {'Content-Type': 'application/json', "Perfecto-Authorization": PerfectoKey}
     try:
-        response = requests.get(url)
+        response = requests.get(url, headers=headers)
         response.raise_for_status()
         data = response.json()
         return (
             data.get("status"),
-            data.get("flowEndCode"),
             data.get("reportKey"),
-            data.get("reason"),
-            data.get("devices")
+            data.get("devices", []),
+            data.get("description"),
+            data.get("numberOfFailedCommands")
         )
     except requests.exceptions.RequestException as e:
         print("❌ Error checking test status:", e)
-        return None, None, None, None, None
-
+        return None, None, [], None, None
+        
+        
 # --- Get Device Details ---
 def get_device_details(device_id):
     url = f"https://{perfecto_cloud_app}/api/v1/device-management/devices/{device_id}"
@@ -80,12 +82,12 @@ def get_device_details(device_id):
         return {}
 
 # --- Generate JUnit XML ---
-def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reason=None, duration_seconds=0.0):
+def generate_junit_xml(test_name, result, test_grid_report_url, device_name, reason=None, duration_seconds=0.0):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
 
-    device_info = get_device_details(device_id) if device_id else {}
-    device_tested = f"{device_info.get('manufacturer', '')} {device_info.get('model', '')}".strip()
+    # Device info
+    device_tested = device_name or "Unknown Device"
 
     testcase_attrs = {
         "classname": "PerfectoTest",
@@ -93,14 +95,6 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_id, reaso
         "time": f"{duration_seconds:.3f}",
         "Perfecto_Test_URL": test_grid_report_url or "",
         "Device_Tested": device_tested,
-        "OS": device_info.get("os", ""),
-        "OS_Version": device_info.get("osVersion", ""),
-        "Resolution": device_info.get("resolution", ""),
-        "Location": device_info.get("location", ""),
-        "Network": device_info.get("operator", {}).get("name", ""),
-        "Manufacturer": device_info.get("manufacturer", ""),
-        "Model": device_info.get("model", ""),
-        "Device_ID": device_info.get("deviceId", "")
     }
 
     testsuite = ET.Element("testsuite", name="Perfecto Test Suite", tests="1",
@@ -127,31 +121,26 @@ def main():
 
     print("🕒 Test execution started with ID:", execution_id, flush=True)
 
-    while True:
-        status, flow_end_code, report_key, reason, devices = check_test_status(execution_id)
-        if status is None:
-            duration = time.time() - start_time
-            generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, None, reason="Could not fetch status", duration_seconds=duration)
-            sys.exit(1)
+while True:
+    status, report_key, devices, description, failed_cmds = check_test_status(execution_id)
+    if status is None:
+        duration = time.time() - start_time
+        generate_junit_xml(TEST_NAME, "failed", report_key, None, reason="Could not fetch status", duration_seconds=duration)
+        sys.exit(1)
 
-        print("Current status:", status, flush=True)
-        print("Flow End Code:", flow_end_code, flush=True)
+    print(f"Current status: {status}", flush=True)
+    print(f"Description: {description}", flush=True)
+    print(f"Failed Commands: {failed_cmds}", flush=True)
 
-        device_id = devices[0].get("id") if devices and isinstance(devices, list) and isinstance(devices[0], dict) else None
+    device_name = devices[0].get("deviceName") if devices else None
 
-        if status.lower() in ['completed', 'failed', 'stopped']:
-            duration = time.time() - start_time
-            generate_junit_xml(
-                TEST_NAME,
-                "passed" if flow_end_code != "Failed" else "failed",
-                test_grid_report_url,
-                device_id,
-                reason,
-                duration_seconds=duration
-            )
-            sys.exit(0 if flow_end_code != "Failed" else 1)
+    if status.lower() in ['completed', 'failed', 'stopped']:
+        duration = time.time() - start_time
+        result = "failed" if failed_cmds and failed_cmds > 0 else "passed"
+        generate_junit_xml(TEST_NAME, result, report_key, device_name, reason=description, duration_seconds=duration)
+        sys.exit(0 if result == "passed" else 1)
 
-        time.sleep(10)
+    time.sleep(10)
 
 if __name__ == "__main__":
     main()
