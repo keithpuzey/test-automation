@@ -38,7 +38,7 @@ public class SalesforceAITest extends WebDriverTestBase implements ITest {
             	    Map.of("validation", "Screen shows salesforce dashboard"));
         	
         	driver.executeScript("perfecto:ai:user-action",
-            	    Map.of("action", "logout using avatar"));
+            	    Map.of("action", "logout using avatar and close device"));
         	
     }
 
