@@ -30,12 +30,12 @@ TEST_NAME = Perfectotestname
 def start_test():
     url = f"https://{perfecto_cloud}/scriptless/api/executions"
     payload = { "testKey": Perfectotest }
-    headers = {'Content-Type': 'application/json',"Perfecto-Authorization": PerfectoKey}
+    headers = {'Content-Type': 'application/json', "Perfecto-Authorization": PerfectoKey}
 
     print(f"📡 Sending request to start test: {url}")
     response = requests.post(url, headers=headers, json=payload)
 
-    if response.status_code == 200:
+    if response.status_code in [200, 201]:  # ✅ accept 201 as success
         try:
             r = response.json()
             print("✅ Test initiation response:", r)
