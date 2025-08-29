@@ -3,8 +3,11 @@
 
     <listeners>
         <listener class-name="com.quantum.tests.CustomJUnitListener"/>
-    </listeners>
 
+        <listener class-name="com.qmetry.qaf.automation.testng.report.QAFTestNGReporter"/>
+        <listener class-name="com.qmetry.qaf.automation.testng.report.QAFTestStepListener"/>
+   
+    <\listeners>
     <test name="TC56 - Search and Validate">
         <packages>
             <package name="com.quantum.tests"/>
