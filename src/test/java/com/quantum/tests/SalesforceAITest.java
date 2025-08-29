@@ -26,13 +26,13 @@ public class SalesforceAITest extends WebDriverTestBase implements ITest {
     @Test
     public void TC56_loginSearchValidateCompany() {
         String accountName = "Pyramid Construction Inc.";
-        currentTestName = "TC56 - Search and Validate [" + accountName + "]";
+        currentTestName = "TC56 - Search and Validate";
 
         driver.executeScript("perfecto:ai:user-action",
-                Map.of("action", "go to https://perforce-dev-ed.develop.my.salesforce.com/"));
+                Map.of("action", "go to https://perforce-dev-ed.develop.my.salesforce.com/and wait for the login page to be displayed"));
 
         	driver.executeScript("perfecto:ai:user-action",
-        	    Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123"));
+        	    Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123 and wait for the salesforce page to be displayed."));
 
         	driver.executeScript("perfecto:ai:validation",
            	    Map.of("validation", "Screen shows salesforce dashboard"));
