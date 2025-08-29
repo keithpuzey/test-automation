@@ -61,11 +61,12 @@ def check_test_status(execution_id):
             data.get("reportKey"),
             data.get("devices", []),
             data.get("description"),
-            data.get("numberOfFailedCommands")
+            data.get("numberOfFailedCommands"),
+            data.get("endCode")  # <-- Only present at the end
         )
     except requests.exceptions.RequestException as e:
         print("❌ Error checking test status:", e)
-        return None, None, [], None, None
+        return None, None, [], None, None, None
         
         
 # --- Get Device Details ---
@@ -82,7 +83,7 @@ def get_device_details(device_id):
         return {}
 
 # --- Generate JUnit XML ---
-def generate_junit_xml(test_name, result, test_grid_report_url, device_name, reason=None, duration_seconds=0.0):
+def generate_junit_xml(test_name, result, test_grid_report_url, device_name, reason=None, duration_seconds=0.0, end_code=None):
     if not os.path.exists(RESULT_DIR):
         os.makedirs(RESULT_DIR)
 
@@ -96,6 +97,9 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_name, rea
         "Perfecto_Test_URL": test_grid_report_url or "",
         "Device_Tested": device_tested,
     }
+
+    if end_code:
+        testcase_attrs["EndCode"] = end_code   # <-- Add endCode into XML attributes
 
     testsuite = ET.Element("testsuite", name="Perfecto Test Suite", tests="1",
                            failures="0" if result == "passed" else "1", errors="0", skipped="0",
@@ -111,6 +115,7 @@ def generate_junit_xml(test_name, result, test_grid_report_url, device_name, rea
     tree.write(RESULT_FILE, encoding="utf-8", xml_declaration=True)
     print(f"📄 JUnit result saved to {RESULT_FILE}", flush=True)
 
+
 # --- Main ---
 def main():
     start_time = time.time()
@@ -121,26 +126,26 @@ def main():
 
     print("🕒 Test execution started with ID:", execution_id, flush=True)
 
-while True:
-    status, report_key, devices, description, failed_cmds = check_test_status(execution_id)
-    if status is None:
-        duration = time.time() - start_time
-        generate_junit_xml(TEST_NAME, "failed", report_key, None, reason="Could not fetch status", duration_seconds=duration)
-        sys.exit(1)
+    while True:
+        status, report_key, devices, description, failed_cmds, end_code = check_test_status(execution_id)
+        if status is None:
+            duration = time.time() - start_time
+            generate_junit_xml(TEST_NAME, "failed", report_key, None, reason="Could not fetch status", duration_seconds=duration)
+            sys.exit(1)
 
-    print(f"Current status: {status}", flush=True)
-    print(f"Description: {description}", flush=True)
-    print(f"Failed Commands: {failed_cmds}", flush=True)
+        print(f"Current status: {status}", flush=True)
+        print(f"Description: {description}", flush=True)
+        print(f"Failed Commands: {failed_cmds}", flush=True)
 
-    device_name = devices[0].get("deviceName") if devices else None
+        device_name = devices[0].get("deviceName") if devices else None
 
-    if status.lower() in ['completed', 'failed', 'stopped']:
-        duration = time.time() - start_time
-        result = "failed" if failed_cmds and failed_cmds > 0 else "passed"
-        generate_junit_xml(TEST_NAME, result, report_key, device_name, reason=description, duration_seconds=duration)
-        sys.exit(0 if result == "passed" else 1)
+        if status.lower() in ['completed', 'failed', 'stopped']:
+            duration = time.time() - start_time
+            result = "failed" if failed_cmds and failed_cmds > 0 else "passed"
+            generate_junit_xml(TEST_NAME, result, report_key, device_name, reason=description, duration_seconds=duration, end_code=end_code)
+            sys.exit(0 if result == "passed" else 1)
 
-    time.sleep(10)
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()
