@@ -29,16 +29,16 @@ public class SalesforceAITest extends WebDriverTestBase implements ITest {
         currentTestName = "TC56 - Search and Validate [" + accountName + "]";
 
         driver.executeScript("perfecto:ai:user-action",
-                Map.of("action", "go to https://perforce-dev-ed.develop.my.salesforce.com/ and login as the user salesexec@perforce.com with the password P4Demo123"));
+                Map.of("action", "go to https://perforce-dev-ed.develop.my.salesforce.com/"));
 
-//        	driver.executeScript("perfecto:ai:user-action",
- //       	    Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123"));
+        	driver.executeScript("perfecto:ai:user-action",
+        	    Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123"));
 
-//        	driver.executeScript("perfecto:ai:validation",
-//           	    Map.of("validation", "Screen shows salesforce dashboard"));
+        	driver.executeScript("perfecto:ai:validation",
+           	    Map.of("validation", "Screen shows salesforce dashboard"));
         	
-//        	driver.executeScript("perfecto:ai:user-action",
-//            	    Map.of("action", "logout using avatar and close device"));
+        	driver.executeScript("perfecto:ai:user-action",
+            	    Map.of("action", "logout using avatar and close device"));
         	
     }
 

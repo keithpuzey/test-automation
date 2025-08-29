@@ -125,26 +125,50 @@ def main():
 
     print("🕒 Test execution started with ID:", execution_id, flush=True)
 
-    while True:
-        status, report_key, devices, description, failed_cmds, end_code = check_test_status(execution_id)
-        if status is None:
-            duration = time.time() - start_time
-            generate_junit_xml(TEST_NAME, "failed", test_grid_report_url, None, reason="Could not fetch status", duration_seconds=duration)
-            sys.exit(1)
+  while True:
+    status, report_key, devices, description, failed_cmds, end_code = check_test_status(execution_id)
+    if status is None:
+        duration = time.time() - start_time
+        generate_junit_xml(
+            TEST_NAME, 
+            "failed", 
+            test_grid_report_url, 
+            None, 
+            reason="Could not fetch status", 
+            duration_seconds=duration,
+            end_code=None
+        )
+        sys.exit(1)
 
-        print(f"Current status: {status}", flush=True)
-        print(f"Description: {description}", flush=True)
-        print(f"Failed Commands: {failed_cmds}", flush=True)
+    print(f"Current status: {status}", flush=True)
+    print(f"Description: {description}", flush=True)
+    print(f"Failed Commands: {failed_cmds}", flush=True)
 
-        device_name = devices[0].get("deviceName") if devices else None
+    device_name = devices[0].get("deviceName") if devices else None
 
-        if status.lower() in ['completed', 'failed', 'stopped']:
-            duration = time.time() - start_time
-            result = "failed" if failed_cmds and failed_cmds > 0 else "passed"
-            generate_junit_xml(TEST_NAME, result, test_grid_report_url, device_name, reason=description, duration_seconds=duration, end_code=end_code)
-            sys.exit(0 if result == "passed" else 1)
+    if status.lower() in ['completed', 'failed', 'stopped']:
+        duration = time.time() - start_time
 
-        time.sleep(10)
+        # Map endCode to JUnit result
+        if end_code == "SUCCESS":
+            result = "passed"
+        elif end_code in ["FAILED", "ABORTED"]:
+            result = "failed"
+        else:
+            result = "failed"  # fallback if endCode missing or unknown
+
+        generate_junit_xml(
+            TEST_NAME, 
+            result, 
+            test_grid_report_url, 
+            device_name, 
+            reason=description, 
+            duration_seconds=duration,
+            end_code=end_code  # <-- endCode included in XML
+        )
+        sys.exit(0 if result == "passed" else 1)
+
+    time.sleep(10)
 
 if __name__ == "__main__":
     main()
