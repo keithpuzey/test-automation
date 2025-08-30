@@ -35,8 +35,8 @@ class CSVDataGeneration:
                 headers=headers,
                 auth=BMCredentials
             )
-           print("Response status:", response.status_code)
-           print("Response body:", response.text[:500])  # first 500 chars 
+            print("Response status:", response.status_code)
+            print("Response body:", response.text[:500])  # first 500 chars 
             
             response.raise_for_status()
 
