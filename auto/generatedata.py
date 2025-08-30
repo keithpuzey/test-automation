@@ -3,6 +3,9 @@ import csv
 import requests
 from config import workspaceID, BMCredentials, test_data_csv
 
+
+BMCredentials = "Bearer " + BMCredentials
+
 class CSVDataGeneration:
     def __init__(self, datamodel_path, repeat_count):
         self.datamodel_path = datamodel_path
