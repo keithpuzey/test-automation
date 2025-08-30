@@ -83,7 +83,7 @@ if __name__ == "__main__":
     # Assuming command line arguments: datamodel_path repeat_count
     import sys
     datamodel_path = sys.argv[1]
-    repeat_count = sys.argv[2]
+    repeat_count = 2
 
     csv_data_generation = CSVDataGeneration(datamodel_path, repeat_count)
     csv_data_generation.generate_test_data()
