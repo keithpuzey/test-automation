@@ -1,7 +1,7 @@
 import json
 import csv
 import requests
-from config import workspaceID, BMCredentials, test_data_csv, SharedFolderID
+from config import workspaceID, BMCredentials, test_data_csv
 
 class CSVDataGeneration:
     def __init__(self, datamodel_path, repeat_count):
@@ -33,57 +33,26 @@ class CSVDataGeneration:
             )
             response.raise_for_status()
 
-            # Save the response data to a CSV file
+            # Extract the result
             result_data = response.json().get('result', {})
             if result_data:
-                csv_file_name = result_data.get('fileName', 'blazedata-test.csv')
-                csv_file_path = f"{test_data_csv}_{csv_file_name}"
-                with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
-                    csv_writer = csv.writer(csv_file)
-                    csv_content = result_data.get('content', '')
-                    csv_reader = csv.reader(csv_content.splitlines())
-                    for row in csv_reader:
-                        csv_writer.writerow(row)
-                        print(', '.join(row))
+                csv_content = result_data.get('content', '')
+                csv_reader = csv.reader(csv_content.splitlines())
 
-                print(f"Data saved to CSV file: {csv_file_path}")
+                print("\n--- Generated CSV Data ---")
+                for row in csv_reader:
+                    print(', '.join(row))
+                print("--- End of CSV Data ---\n")
 
-            print(f"\n{self.repeat_count} Test Data Records generated using Data Model {self.datamodel_path}\n")
-            # print(response.text)
-
-            # Make the API request to get the signed URL of the Shared Folder
-            # API endpoint URL to download the JSON data
-            response = requests.get(
-                'https://a.blazemeter.com/api/v4/folders/' + SharedFolderID + '/s3/sign?fileName=test_data.csv_blazedata-test.csv',
-                headers=headers,
-                auth=BMCredentials
-            )
-
-            # Load the JSON response
-            data = response.json()
-
-            # Extract the signed URL from the JSON response
-            signed_url = data["result"]
-
-            # Use the signed_url to upload the file to the BlazeMeter Shared folder
-
-            with open(csv_file_path, "rb") as file:
-                response = requests.put(signed_url, data=file)
-
-                # Check if the upload was successful
-                if response.status_code != 200:
-                    print(f"Error: Failed to upload file. Status Code: {response.status_code}")
-                else:
-                    print("File successfully uploaded to BlazeMeter shared folder.")
+            print(f"{self.repeat_count} Test Data Records generated using Data Model {self.datamodel_path}")
 
         except Exception as e:
             print(f"An error occurred: {str(e)}")
 
 if __name__ == "__main__":
-    # Assuming command line arguments: datamodel_path repeat_count
     import sys
     datamodel_path = sys.argv[1]
-    repeat_count = 2
+    repeat_count = int(sys.argv[2])   # ensure int
 
     csv_data_generation = CSVDataGeneration(datamodel_path, repeat_count)
     csv_data_generation.generate_test_data()
