@@ -3,8 +3,9 @@
 
     <listeners>
         <listener class-name="com.quantum.tests.CustomJUnitListener"/>
-  
+        <listener class-name="com.quantum.tests.StepLoggingListener"/>
     </listeners>
+
     <test name="TC56 - Search and Validate">
         <packages>
             <package name="com.quantum.tests"/>
