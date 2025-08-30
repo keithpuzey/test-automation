@@ -12,6 +12,8 @@ import java.net.MalformedURLException;
 import java.util.Map;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
+import org.testng.Assert;
+
 
 
 // Corrected class declaration
@@ -20,13 +22,19 @@ public class SalesforceAITest extends WebDriverTestBase implements ITest {
     private QAFWebDriver driver;
     private String currentTestName;
 
+private void checkStepResult(Object result, String stepName) {
+    if (!(result instanceof Boolean && (Boolean) result)) {
+        Assert.fail("Step failed: " + stepName + " → Result: " + result);
+    }
+}
+
     @BeforeMethod
     public void setupDriver() {
         // The getDriver() method is available because the class extends WebDriverTestBase
         driver = getDriver(); 
     }
 
-    @Test
+@Test
 public void TC56_loginSearchValidateCompany() {
     currentTestName = "TC56 - Search and Validate";
 
@@ -34,21 +42,25 @@ public void TC56_loginSearchValidateCompany() {
     Object step1 = driver.executeScript("perfecto:ai:user-action",
             Map.of("action", "go to https://perforce-dev-ed.develop.my.salesforce.com/ and wait for the login page to be displayed"));
     Reporter.log(" → Result: " + step1, true);
+    checkStepResult(step1, "Launching the app");
 
     Reporter.log("Step 2: Logging in", true);
     Object step2 = driver.executeScript("perfecto:ai:user-action",
             Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123 and wait for the salesforce page to be displayed."));
     Reporter.log(" → Result: " + step2, true);
+    checkStepResult(step2, "Logging in");
 
     Reporter.log("Step 3: Validate", true);
     Object step3 = driver.executeScript("perfecto:ai:validation",
             Map.of("validation", "Screen shows salesforce dashboard"));
     Reporter.log(" → Result: " + step3, true);
+    checkStepResult(step3, "Validate");
 
     Reporter.log("Step 4: Logout", true);
     Object step4 = driver.executeScript("perfecto:ai:user-action",
             Map.of("action", "logout using avatar and close device"));
     Reporter.log(" → Result: " + step4, true);
+    checkStepResult(step4, "Logout");
 }
 
     @Override
