@@ -3,10 +3,6 @@ import csv
 import requests
 from config import workspaceID, BMCredentials, test_data_csv
 
-
-# Add Bearer prefix
-BMCredentials = f"Bearer {BMCredentials}"
-
 # Print the value
 print(f"BM Creds: {BMCredentials}")
 
