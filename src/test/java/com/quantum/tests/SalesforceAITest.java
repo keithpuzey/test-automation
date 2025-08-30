@@ -38,19 +38,19 @@ private void checkStepResult(Object result, String stepName) {
 public void TC56_loginSearchValidateCompany() {
     currentTestName = "TC56 - Search and Validate";
 
-    Reporter.log("Step 1: Launching the app", true);
+    Reporter.log("Launching Browser and Navigate to salesforce.com site.", true);
     Object step1 = driver.executeScript("perfecto:ai:user-action",
             Map.of("action", "go to https://perforce-dev-ed.develop.my.salesforce.com/ and wait for the login page to be displayed"));
     Reporter.log(" → Result: " + step1, true);
     checkStepResult(step1, "Launching the app");
 
-    Reporter.log("Step 2: Logging in", true);
+    Reporter.log("SalesForce Login", true);
     Object step2 = driver.executeScript("perfecto:ai:user-action",
             Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123 and wait for the salesforce page to be displayed."));
     Reporter.log(" → Result: " + step2, true);
     checkStepResult(step2, "Logging in");
 
-    Reporter.log("Step 3: Validate", true);
+    Reporter.log("Validate dashboard", true);
     Object step3 = driver.executeScript("perfecto:ai:validation",
             Map.of("validation", "Screen shows salesforce dashboard"));
     Reporter.log(" → Result: " + step3, true);
