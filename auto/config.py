@@ -1,10 +1,8 @@
 import os
 
 # Get tokens from Jenkins environment
-cred = os.getenv("BMCredentials")  # returns "user:apikey"
-if cred:
-    BMCredentials = tuple(cred.split(":", 1))
-else:
+BMCredentials = os.getenv("BlazeCreds")  # returns "user:apikey"
+if not BMCredentials:
     raise RuntimeError("Environment Variable BMCredentials not set")
 
 PerfectoKey = os.getenv("PerfectoToken")
