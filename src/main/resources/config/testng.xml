@@ -6,9 +6,9 @@
   
     </listeners>
     <test name="TC56 - Search and Validate">
-        <packages>
-            <package name="com.quantum.tests"/>
-        </packages>
+        <classes>
+            <class name="com.quantum.tests.SalesforceAITest.java"/>
+        </classes>
     </test>
 
 </suite>
