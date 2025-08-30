@@ -4,8 +4,11 @@ import requests
 from config import workspaceID, BMCredentials, test_data_csv
 
 
-BMCredentials = "Bearer " + BMCredentials
-print "BM Creds " + BMCredentials 
+# Add Bearer prefix
+BMCredentials = f"Bearer {BMCredentials}"
+
+# Print the value
+print(f"BM Creds: {BMCredentials}")
 
 class CSVDataGeneration:
     def __init__(self, datamodel_path, repeat_count):
