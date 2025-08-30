@@ -12,7 +12,7 @@ class CSVDataGeneration:
         self.repeat_count = repeat_count
 
     def generate_test_data(self):
-        print("DEBUG types:", type(json), type(csv), type(requests), type(str))
+
         try:
             # Open Data Model file
             with open(self.datamodel_path, 'r', encoding='utf-8') as datamodel_file:
@@ -28,7 +28,7 @@ class CSVDataGeneration:
                 'Content-Type': 'application/json',
                 'Accept': 'application/json,text/javascript, */*',
             }
-
+            
             response = requests.post(
                 url,
                 json=datamodel_def,
