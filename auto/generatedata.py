@@ -5,6 +5,7 @@ from config import workspaceID, BMCredentials, test_data_csv
 
 
 BMCredentials = "Bearer " + BMCredentials
+print "BM Creds " + BMCredentials 
 
 class CSVDataGeneration:
     def __init__(self, datamodel_path, repeat_count):
