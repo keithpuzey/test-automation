@@ -38,8 +38,6 @@ public class CustomJUnitListener extends TestListenerAdapter {
             // Attach the step logs so they appear in the JUnit XML <system-out>
             tr.setAttribute("step-logs", sb.toString());
 
-            // Also send to console
-            System.out.println(sb.toString());
         }
     }
 }
