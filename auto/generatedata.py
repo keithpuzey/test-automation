@@ -28,6 +28,7 @@ class CSVDataGeneration:
                 'Content-Type': 'application/json',
                 'Accept': 'application/json,text/javascript, */*',
             }
+            print("DEBUG BMCredentials:", BMCredentials, type(BMCredentials))
             
             response = requests.post(
                 url,
