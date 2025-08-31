@@ -8,7 +8,7 @@ print(f"BM Creds: {BMCredentials}")
 
 if isinstance(BMCredentials, str) and ":" in BMCredentials:
     BMCredentials = tuple(BMCredentials.split(":", 1))
-    
+
 class CSVDataGeneration:
     def __init__(self, datamodel_path, repeat_count):
         self.datamodel_path = datamodel_path
@@ -32,18 +32,13 @@ class CSVDataGeneration:
                 'Accept': 'application/json,text/javascript, */*',
             }
 
-
-            print("DEBUG BMCredentials:", BMCredentials, type(BMCredentials))
-
             response = requests.post(
                 url,
                 json=datamodel_def,
                 headers=headers,
                 auth=BMCredentials
             )
-            print("Response status:", response.status_code)
-            print("Response body:", response.text[:500])  # first 500 chars 
-            
+
             response.raise_for_status()
 
             # Extract the result
