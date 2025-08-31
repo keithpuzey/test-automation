@@ -28,8 +28,10 @@ class CSVDataGeneration:
                 'Content-Type': 'application/json',
                 'Accept': 'application/json,text/javascript, */*',
             }
+            if isinstance(BMCredentials, str) and ":" in BMCredentials:
+                BMCredentials = tuple(BMCredentials.split(":", 1))
             print("DEBUG BMCredentials:", BMCredentials, type(BMCredentials))
-            
+
             response = requests.post(
                 url,
                 json=datamodel_def,
