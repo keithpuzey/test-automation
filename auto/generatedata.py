@@ -1,11 +1,11 @@
 import json
 import csv
 import requests
+from tabulate import tabulate
 from config import workspaceID, BMCredentials, test_data_csv
 
-# Print the value
+# Convert BMCredentials string to tuple if needed
 print(f"BM Creds: {BMCredentials}")
-
 if isinstance(BMCredentials, str) and ":" in BMCredentials:
     BMCredentials = tuple(BMCredentials.split(":", 1))
 
@@ -15,7 +15,6 @@ class CSVDataGeneration:
         self.repeat_count = repeat_count
 
     def generate_test_data(self):
-
         try:
             # Open Data Model file
             with open(self.datamodel_path, 'r', encoding='utf-8') as datamodel_file:
@@ -38,7 +37,6 @@ class CSVDataGeneration:
                 headers=headers,
                 auth=BMCredentials
             )
-
             response.raise_for_status()
 
             # Extract the result
@@ -46,11 +44,15 @@ class CSVDataGeneration:
             if result_data:
                 csv_content = result_data.get('content', '')
                 csv_reader = csv.reader(csv_content.splitlines())
+                rows = list(csv_reader)
 
-                print("\n--- Generated CSV Data ---")
-                for row in csv_reader:
-                    print(', '.join(row))
-                print("--- End of CSV Data ---\n")
+                if rows:
+                    headers = rows[0]
+                    data = rows[1:]
+                    print("\n--- Generated CSV Data ---")
+                    # Use tabulate to format nicely
+                    print(tabulate(data, headers=headers, tablefmt="github"))
+                    print("--- End of CSV Data ---\n")
 
             print(f"{self.repeat_count} Test Data Records generated using Data Model {self.datamodel_path}")
 
@@ -60,7 +62,7 @@ class CSVDataGeneration:
 if __name__ == "__main__":
     import sys
     datamodel_path = sys.argv[1]
-    repeat_count = 5   # ensure int
+    repeat_count = 5   # hardcoded count for now
 
     csv_data_generation = CSVDataGeneration(datamodel_path, repeat_count)
     csv_data_generation.generate_test_data()
