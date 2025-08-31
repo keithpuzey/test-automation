@@ -6,6 +6,9 @@ from config import workspaceID, BMCredentials, test_data_csv
 # Print the value
 print(f"BM Creds: {BMCredentials}")
 
+if isinstance(BMCredentials, str) and ":" in BMCredentials:
+    BMCredentials = tuple(BMCredentials.split(":", 1))
+    
 class CSVDataGeneration:
     def __init__(self, datamodel_path, repeat_count):
         self.datamodel_path = datamodel_path
@@ -28,8 +31,8 @@ class CSVDataGeneration:
                 'Content-Type': 'application/json',
                 'Accept': 'application/json,text/javascript, */*',
             }
-            if isinstance(BMCredentials, str) and ":" in BMCredentials:
-                BMCredentials = tuple(BMCredentials.split(":", 1))
+
+
             print("DEBUG BMCredentials:", BMCredentials, type(BMCredentials))
 
             response = requests.post(
