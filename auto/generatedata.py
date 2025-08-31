@@ -62,7 +62,7 @@ class CSVDataGeneration:
 if __name__ == "__main__":
     import sys
     datamodel_path = sys.argv[1]
-    repeat_count = 5   # hardcoded count for now
+    repeat_count = 20
 
     csv_data_generation = CSVDataGeneration(datamodel_path, repeat_count)
     csv_data_generation.generate_test_data()
