@@ -40,13 +40,13 @@ public void TC56_loginSearchValidateCompany() {
 
     Reporter.log("Launching Browser and Navigate to salesforce.com site.", true);
     Object step1 = driver.executeScript("perfecto:ai:user-action",
-            Map.of("action", "go to https://perforce-dev-ed.develop.my.salesforce.com/ and login as the user salesexec@perforce.com with the password P4Demo123 and wait for the salesforce page to be displayed"));
+            Map.of("action", "go to https://perforce-dev-ed.develop.my.salesforce.com/ "));
     Reporter.log(" → Result: " + step1, true);
     checkStepResult(step1, "Launching the app");
 
     Reporter.log("SalesForce Login", true);
     Object step2 = driver.executeScript("perfecto:ai:user-action",
-            Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123 and wait for the salesforce page to be displayed."));
+            Map.of("action", "login as the user salesexec@perforce.com with the password P4Demo123"));
     Reporter.log(" → Result: " + step2, true);
     checkStepResult(step2, "Logging in");
 

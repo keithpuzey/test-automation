@@ -142,7 +142,7 @@
 		<dependency>
 		    <groupId>com.qmetry</groupId>
 		    <artifactId>qaf</artifactId>
-		    <version>3.3.0</version> <!-- check latest version -->
+		    <version>3.2.0</version> <!-- check latest version -->
 		</dependency>
 
 <!--		<dependency>-->
@@ -162,7 +162,6 @@
 <!--		</dependency>-->
 
 
-
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -173,11 +172,7 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.17.1</version>
 		</dependency>
-		<dependency>
-    		<groupId>com.qmetry</groupId>
-    		<artifactId>qaf</artifactId>
-    		<version>3.2.0</version> <!-- or whichever version you're using -->
-		</dependency>
+
 <dependency>
   <groupId>org.seleniumhq.selenium</groupId>
   <artifactId>selenium-java</artifactId>
