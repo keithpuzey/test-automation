@@ -5,7 +5,7 @@ from tabulate import tabulate
 from config import workspaceID, BMCredentials, test_data_csv
 
 # Convert BMCredentials string to tuple if needed
-print(f"BM Creds: {BMCredentials}")
+
 if isinstance(BMCredentials, str) and ":" in BMCredentials:
     BMCredentials = tuple(BMCredentials.split(":", 1))
 
