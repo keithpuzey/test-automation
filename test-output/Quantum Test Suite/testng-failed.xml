@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Quantum Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="TC56 - Search and Validate(failed)">
+    <classes>
+      <class name="com.quantum.tests.SalesforceAITest">
+        <methods>
+          <include name="initDriver"/>
+          <include name="loginSearchValidateCompany"/>
+        </methods>
+      </class> <!-- com.quantum.tests.SalesforceAITest -->
+    </classes>
+  </test> <!-- TC56 - Search and Validate(failed) -->
+</suite> <!-- Failed suite [Quantum Test Suite] -->

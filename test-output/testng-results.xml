@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[▀▄▀▄▀ DEVICE PROPERTIES: Capabilities {app: , appiumVersion: latest, assert_javascript_enabled: true, audioStreamInfo: {"audioStreamingServerUrl":..., automationName: UIAutomator2, browserName: Chrome, databaseEnabled: false, desired: {appActivity: com.android.chrome/com.goog..., appPackage: com.android.chrome, appiumVersion: latest, automationName: UIAutomator2, browserName: Chrome, deviceName: RFCX30181MV, platformName: Android, platformVersion: 14, useAppiumForHybrid: false}, deviceApiLevel: 34, deviceManufacturer: samsung, deviceModel: SM-S911U1, deviceName: RFCX30181MV, deviceScreenDensity: 480, deviceScreenSize: 1080x2340, deviceSessionId: edbbca63-1e10-4a30-a16a-082..., deviceUDID: RFCX30181MV, enableAppiumBehavior: false, entityType: remote_web_driver, executionId: edbbca63-1e10-4a30-a16a-082..., host: demo.perfectomobile.com, internalPureAppiumFlow: true, javascriptEnabled: true, locationContextEnabled: false, mcmExecutionId: kpuzey@perforce.com_RemoteW..., networkConnectionEnabled: true, password: , pixelRatio: 3, platform: LINUX, platformName: ANDROID, platformVersion: 14, reportPdfUrl: https://demo.app.perfectomo..., scriptName: RemoteWebDriver, securePureAppiumFlow: false, securityToken: , serverConnector: , statBarHeight: 81, stopUrl: https://demo.perfectomobile..., streamInfo: {"url":"wss://ams-01.perfec..., takesScreenshot: true, testGridReportUrl: https://demo.app.perfectomo..., testRunWithPureAppiumFlow: true, useAppiumForHybrid: false, useAppiumForWeb: false, viewportRect: {height: 2259, left: 0, top: 81, width: 1080}, warnings: {}, webStorageEnabled: false} ▀▄▀▄▀]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2025-08-27T09:19:40 BST" name="Default suite" finished-at="2025-08-27T09:21:19 BST" duration-ms="99800">
+    <groups>
+    </groups>
+    <test started-at="2025-08-27T09:19:40 BST" name="Default test" finished-at="2025-08-27T09:21:19 BST" duration-ms="99800">
+      <class name="com.quantum.tests.SalesforceAITest">
+        <test-method is-config="true" signature="initDriver()[pri:0, instance:com.quantum.tests.SalesforceAITest@1187c9e8]" started-at="2025-08-27T09:19:40 BST" name="initDriver" finished-at="2025-08-27T09:20:18 BST" duration-ms="38171" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[▀▄▀▄▀ DEVICE PROPERTIES: Capabilities {app: , appiumVersion: latest, assert_javascript_enabled: true, audioStreamInfo: {"audioStreamingServerUrl":..., automationName: UIAutomator2, browserName: Chrome, databaseEnabled: false, desired: {appActivity: com.android.chrome/com.goog..., appPackage: com.android.chrome, appiumVersion: latest, automationName: UIAutomator2, browserName: Chrome, deviceName: RFCX30181MV, platformName: Android, platformVersion: 14, useAppiumForHybrid: false}, deviceApiLevel: 34, deviceManufacturer: samsung, deviceModel: SM-S911U1, deviceName: RFCX30181MV, deviceScreenDensity: 480, deviceScreenSize: 1080x2340, deviceSessionId: edbbca63-1e10-4a30-a16a-082..., deviceUDID: RFCX30181MV, enableAppiumBehavior: false, entityType: remote_web_driver, executionId: edbbca63-1e10-4a30-a16a-082..., host: demo.perfectomobile.com, internalPureAppiumFlow: true, javascriptEnabled: true, locationContextEnabled: false, mcmExecutionId: kpuzey@perforce.com_RemoteW..., networkConnectionEnabled: true, password: , pixelRatio: 3, platform: LINUX, platformName: ANDROID, platformVersion: 14, reportPdfUrl: https://demo.app.perfectomo..., scriptName: RemoteWebDriver, securePureAppiumFlow: false, securityToken: , serverConnector: , statBarHeight: 81, stopUrl: https://demo.perfectomobile..., streamInfo: {"url":"wss://ams-01.perfec..., takesScreenshot: true, testGridReportUrl: https://demo.app.perfectomo..., testRunWithPureAppiumFlow: true, useAppiumForHybrid: false, useAppiumForWeb: false, viewportRect: {height: 2259, left: 0, top: 81, width: 1080}, warnings: {}, webStorageEnabled: false} ▀▄▀▄▀]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- initDriver -->
+        <test-method signature="loginSearchValidateCompany()[pri:0, instance:com.quantum.tests.SalesforceAITest@1187c9e8]" started-at="2025-08-27T09:20:18 BST" name="loginSearchValidateCompany" finished-at="2025-08-27T09:21:18 BST" duration-ms="60026" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[java.net.http.HttpTimeoutException: request timed out
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '15.6.1', java.version: '22.0.1'
+Driver info: driver.version: QAFExtendedWebDriver
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '15.6.1', java.version: '22.0.1'
+Driver info: com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver
+Command: [edbbca63-1e10-4a30-a16a-0828f2c0cc99, executeScript {args=[{action=use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/}], script=perfecto:ai:user-action}]
+Capabilities {app: , appiumVersion: latest, assert_javascript_enabled: true, audioStreamInfo: {"audioStreamingServerUrl":..., automationName: UIAutomator2, browserName: Chrome, databaseEnabled: false, desired: {appActivity: com.android.chrome/com.goog..., appPackage: com.android.chrome, appiumVersion: latest, automationName: UIAutomator2, browserName: Chrome, deviceName: RFCX30181MV, platformName: Android, platformVersion: 14, useAppiumForHybrid: false}, deviceApiLevel: 34, deviceManufacturer: samsung, deviceModel: SM-S911U1, deviceName: RFCX30181MV, deviceScreenDensity: 480, deviceScreenSize: 1080x2340, deviceSessionId: edbbca63-1e10-4a30-a16a-082..., deviceUDID: RFCX30181MV, enableAppiumBehavior: false, entityType: remote_web_driver, executionId: edbbca63-1e10-4a30-a16a-082..., host: demo.perfectomobile.com, internalPureAppiumFlow: true, javascriptEnabled: true, locationContextEnabled: false, mcmExecutionId: kpuzey@perforce.com_RemoteW..., networkConnectionEnabled: true, password: , pixelRatio: 3, platform: LINUX, platformName: ANDROID, platformVersion: 14, reportPdfUrl: https://demo.app.perfectomo..., scriptName: RemoteWebDriver, securePureAppiumFlow: false, securityToken: , serverConnector: , statBarHeight: 81, stopUrl: https://demo.perfectomobile..., streamInfo: {"url":"wss://ams-01.perfec..., takesScreenshot: true, testGridReportUrl: https://demo.app.perfectomo..., testRunWithPureAppiumFlow: true, useAppiumForHybrid: false, useAppiumForWeb: false, viewportRect: {height: 2259, left: 0, top: 81, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: edbbca63-1e10-4a30-a16a-0828f2c0cc99]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: java.net.http.HttpTimeoutException: request timed out
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '15.6.1', java.version: '22.0.1'
+Driver info: driver.version: QAFExtendedWebDriver
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '15.6.1', java.version: '22.0.1'
+Driver info: com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver
+Command: [edbbca63-1e10-4a30-a16a-0828f2c0cc99, executeScript {args=[{action=use a browser to go to url https://perforce-dev-ed.develop.my.salesforce.com/}], script=perfecto:ai:user-action}]
+Capabilities {app: , appiumVersion: latest, assert_javascript_enabled: true, audioStreamInfo: {"audioStreamingServerUrl":..., automationName: UIAutomator2, browserName: Chrome, databaseEnabled: false, desired: {appActivity: com.android.chrome/com.goog..., appPackage: com.android.chrome, appiumVersion: latest, automationName: UIAutomator2, browserName: Chrome, deviceName: RFCX30181MV, platformName: Android, platformVersion: 14, useAppiumForHybrid: false}, deviceApiLevel: 34, deviceManufacturer: samsung, deviceModel: SM-S911U1, deviceName: RFCX30181MV, deviceScreenDensity: 480, deviceScreenSize: 1080x2340, deviceSessionId: edbbca63-1e10-4a30-a16a-082..., deviceUDID: RFCX30181MV, enableAppiumBehavior: false, entityType: remote_web_driver, executionId: edbbca63-1e10-4a30-a16a-082..., host: demo.perfectomobile.com, internalPureAppiumFlow: true, javascriptEnabled: true, locationContextEnabled: false, mcmExecutionId: kpuzey@perforce.com_RemoteW..., networkConnectionEnabled: true, password: , pixelRatio: 3, platform: LINUX, platformName: ANDROID, platformVersion: 14, reportPdfUrl: https://demo.app.perfectomo..., scriptName: RemoteWebDriver, securePureAppiumFlow: false, securityToken: , serverConnector: , statBarHeight: 81, stopUrl: https://demo.perfectomobile..., streamInfo: {"url":"wss://ams-01.perfec..., takesScreenshot: true, testGridReportUrl: https://demo.app.perfectomo..., testRunWithPureAppiumFlow: true, useAppiumForHybrid: false, useAppiumForWeb: false, viewportRect: {height: 2259, left: 0, top: 81, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: edbbca63-1e10-4a30-a16a-0828f2c0cc99
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at java.base/java.util.function.Function.lambda$andThen$1(Function.java:88)
+at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$9(RemoteWebDriverBuilder.java:448)
+at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$10(RemoteWebDriverBuilder.java:455)
+at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$11(RemoteWebDriverBuilder.java:460)
+at org.openqa.selenium.remote.RemoteWebDriverBuilder.lambda$createExecutor$12(RemoteWebDriverBuilder.java:470)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeSuper(QAFExtendedWebDriver.java:277)
+at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeWithoutLog(QAFExtendedWebDriver.java:295)
+at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeWitoutLog(QAFExtendedWebDriver.java:344)
+at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.execute(QAFExtendedWebDriver.java:321)
+at com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver.executeScript(QAFExtendedWebDriver.java:727)
+at com.quantum.tests.SalesforceAITest.loginSearchValidateCompany(SalesforceAITest.java:21)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:833)
+at org.testng.TestRunner.run(TestRunner.java:606)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginSearchValidateCompany -->
+      </class> <!-- com.quantum.tests.SalesforceAITest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

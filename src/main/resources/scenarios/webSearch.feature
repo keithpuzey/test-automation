@@ -1,13 +1,12 @@
-@Mobile
-@SearchDoctors
-Feature: TC43 - Find a Doctor
 
-  Scenario Outline: TC43 - Search doctor name
-   Given I navigate to the TopDoctors site
-    When I search for "<doctorName>"
-    Then I wait between searches
+Feature: TC56 - Search and Validate
+
+  Scenario Outline: TC56 - Search and Validate
+   Given I navigate to the Salesforce Site and login as salesexec
+    When I search for "<companyName>"
+    Then I validate screen contains "<companyName>"
     Examples:
-      | doctorName | 
-      | Ms Anna Bridgens |
-      | Mr Chris Nicolay |
-      | Dr Julian Emmanuel |
+      | companyName | 
+      | Pyramid Construction Inc. |
+      | Express Logistics and Transport |
+      | Grand Hotels & Resorts Ltd |

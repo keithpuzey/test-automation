@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite allow-return-values="false" configfailurepolicy="skip" data-provider-thread-count="10" group-by-instances="false" guice-stage="DEVELOPMENT" junit="false" name="Web Demo Suite - Failed" parallel="tests" preserve-order="true" skipfailedinvocationcounts="false" thread-count="100" verbose="0">
+  <listeners>
+    <listener class-name="com.quantum.listeners.QuantumReportiumListener"/>
+  </listeners>
+  <test allow-return-values="false" group-by-instances="false" junit="false" name="Web Scenarios Chrome Test" parallel="tests" preserve-order="true" skipfailedinvocationcounts="false" thread-count="100" verbose="0">
+    <parameter name="perfecto.capabilities.browserName" value="Chrome"/>
+    <parameter name="env.resources" value="src/main/resources/common"/>
+    <parameter name="perfecto.capabilities.browserVersion" value="latest"/>
+    <parameter name="perfecto.capabilities.platformName" value="android"/>
+    <groups>
+      <run>
+        <include name="@SearchDoctors"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.qmetry.qaf.automation.step.client.gherkin.GherkinScenarioFactory"/>
+    </classes>
+  </test> <!-- Web Scenarios Chrome Test -->
+</suite><!-- Web Demo Suite - Failed -->

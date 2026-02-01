@@ -61,6 +61,8 @@
 
 				<configuration>
 					<argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
+
+          <forkedProcessTimeoutInSeconds>1800</forkedProcessTimeoutInSeconds>
 					<reportsDirectory>${project.build.directory}/test-results</reportsDirectory>
 					<systemPropertyVariables>
 						<!--<application.properties.file>
@@ -68,7 +70,7 @@
 					</systemPropertyVariables>
 
 					<suiteXmlFiles>
-						<suiteXmlFile>${testngXmlDir}/${testngXmlFile}</suiteXmlFile>
+						<suiteXmlFile>src/main/resources/config/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<skipTests>${skipTests}</skipTests>
 				</configuration>
@@ -132,11 +134,16 @@
 			<version>1.3</version>
 		</dependency>
 
-				<dependency>
-					<groupId>io.perfecto</groupId>
-					<artifactId>quantum</artifactId>
-					<version>${quantum.version}</version>
-				</dependency>
+		<dependency>
+			<groupId>io.perfecto</groupId>
+			<artifactId>quantum</artifactId>
+			<version>${quantum.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.qmetry</groupId>
+		    <artifactId>qaf</artifactId>
+		    <version>3.2.0</version> <!-- check latest version -->
+		</dependency>
 
 <!--		<dependency>-->
 <!--			<groupId>com.quantum</groupId>-->
@@ -155,7 +162,6 @@
 <!--		</dependency>-->
 
 
-
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -166,11 +172,11 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.17.1</version>
 		</dependency>
-		<dependency>
-    		<groupId>com.qmetry</groupId>
-    		<artifactId>qaf</artifactId>
-    		<version>3.2.0</version> <!-- or whichever version you're using -->
-		</dependency>
 
+<dependency>
+  <groupId>org.seleniumhq.selenium</groupId>
+  <artifactId>selenium-java</artifactId>
+  <version>4.13.0</version>
+</dependency>
 	</dependencies>
 </project>
